@@ -1,0 +1,96 @@
+# DEFAULT
+welcome: welcome
+name: name
+email: email
+permissions: permissions
+administrator: administrator
+editor: editor
+collaborator: collaborator
+password: password
+password_confirmation: repeat password
+title: title
+style: style
+content: content
+
+save: save
+search: search
+new: new
+edit: edit
+delete: delete
+show: show
+url: url
+
+error: Sorry, something goes wrong
+
+# SECURITY
+login_bad: Invalid username or password
+logout_good: You are logged out
+no_login: You must login first
+permissions_error: You don't have permissions to do this action
+
+# ADMIN
+setting_updated: Site settings are updated
+
+# HEADER
+header_logout: Logout
+header_website: Website
+header_dashboard: Dashboard
+
+# MENU
+menu_home: Home
+menu_users: Users
+menu_pages: Pages
+menu_notes: Notes
+menu_settings: Settings
+
+# USERS
+user_singular: user
+user_plural: users
+
+user_saved: The new user is saved
+user_not_saved: Sorry, the new user is not saved
+user_updated: User is updated
+user_not_updated: User is not updated
+user_deleted: User is deleted
+user_not_found: No users found
+user_delete_confirmation: Do you really want to delete user?
+
+# PAGES
+page_singular: page
+page_plural: pages
+
+page_saved: The new page is saved
+page_not_saved: Sorry, the new page is not saved
+page_updated: Page is updated
+page_not_updated: Page is not updated
+page_deleted: Page is deleted
+page_not_found: No pages found
+page_delete_confirmation: Do you really want to delete the page?
+
+# NOTES
+note_singular: note
+note_plural: notes
+
+note_saved: The new note is saved
+note_not_saved: Sorry, the new note is not saved
+note_updated: Note is updated
+note_not_updated: Note is not updated
+note_deleted: Note is deleted
+note_not_found: No notes found
+note_delete_confirmation: Do you really want to delete the note?
+
+# TYPES
+type_singular: object
+type_plural: objects
+
+type_saved: The new object is saved
+type_not_saved: Sorry, the new object is not saved
+type_updated: Object is updated
+type_not_updated: Object is not updated
+type_deleted: Object is deleted
+type_not_found: No objects found
+type_delete_confirmation: Do you really want to delete the object?
+
+# ATTACHMENTS
+attachment_deleted: Attachment is deleted
+attachment_not_found: This field has not attachment

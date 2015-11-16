@@ -1,0 +1,23 @@
+<% provide(:title, $language['note_plural'].capitalize) %>
+
+<div class="home panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12 col-lg-12 text-right">
+      <%= link_to $language['new'].capitalize, new_admin_note_path, class: "btn btn-primary" %>
+      <br><br>
+    </div>
+    <% @notes.each do |note| %>
+    <div class="col-md-6 col-lg-6">
+      <div class="panel panel-default panel-<%= note.style %>">
+        <a class="panel-heading" href="<%= admin_note_path(note) %>" style="display: block"><%= note.title %></a>
+      </div>
+    </div>
+    <% end %>
+    <div class="col-md-12 col-lg-12" style="text-align: center">
+      <%= will_paginate @notes, :renderer => BootstrapPagination::Rails %>
+    </div>
+  </div>
+</div>

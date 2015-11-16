@@ -1,0 +1,37 @@
+<% provide(:title, "Configuration") %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12 col-lg-12">
+      <div class="page-header">
+        <h2>Sviluppo front-end pagine</h2>
+      </div>
+      Ogni pagina ha dei fields propri. I possibili fields sono: text, number, textarea, editor, image, file, repeater.<br>
+      Durante lo sviluppo del front-end è possibile accedere ai dati di questi field attraverso la funzione <b>get_field(field_name, page_id)</b>. <br>
+      La variabile <i>field_name</i> è una stringa contenente il nome univoco assegnato al field durante la sua creazione; la variabile <i>page_id</i> è l'id della pagina in cui ci troviamo.<br>
+      E' possibile accedere ai dati della pagina in cui ci troviamo attraverso la variabile globale <i>@page</i>:<br>
+      <br>
+      - <b>@page.id</b> : ritorna l'id univoco della pagina<br>
+      - <b>@page.title</b> : titolo della pagina mostrato al cliente nel back-office<br>
+      - <b>@page.url</b> : url relativo assegnato alla pagina<br>
+
+      <div class="page-header">
+        <h2>Sviluppo front-end type</h2>
+      </div>
+      Ogni type ha due file di template: index e show.<br>
+      <br>
+      Il file index mostra la lista di oggetti appartenenti al type; è possibile accedere ad un array contenente quella lista attraverso la variabile globale <i>@type_objects</i> o attraverso la funzione <b>get_typeobjects()</b>.<br>
+      <br>
+      Il file show mostra un solo oggetto appartenente al type; è possibile accedere allì'oggetto attraverso la variabile globale <i>@type_object</i>. È inoltre possibile accedere ad uno specifico field dell'oggetto attraverso la funzione <b>get_typefield(field_name, type_field)</b>.<br>
+      In questo caso la variabile <i>field_name</i> è una stringa contenente il nome univoco assegnato al field durante la sua creazione; la variabile <i>type_field</i> è una stringa indicante il tipo di field che si estrae (text, number ecc).<br>
+    </div>
+
+    <div class="col-md-12 col-lg-12 text-right">
+      <br>
+      <a href="<%= admin_settings_path %>" class="btn btn-primary">Back</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<% provide(:title, "#{@note.title}") %>
+
+<div class="home panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12 col-lg-12">
+      <div class="panel panel-default panel-<%= @note.style %>">
+        <div class="panel-heading"><%= @note.title %></div>
+        <div class="panel-body">
+          <%= raw @note.content %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-12">
+      <%= link_to $language['edit'].capitalize, edit_admin_note_path(@note), class: "btn btn-info" %>
+      <%= link_to $language['delete'].capitalize, admin_note_path(@note), :method => :delete, data: {confirm: $language['note_delete_confirmation']}, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<h4 class="field-title"><%= title %></h4>
+<div id="selectize-container-<%= unique_key %>">
+<select id="select-<%= unique_key %>" class="selectized" placeholder="Select objects" multiple="multiple" tabindex="-1" style="display: none;"></select>
+<input id="select-<%= unique_key %>-hidden" type="hidden" name="<%= name %>">
+</div>
+<br>
+
+<script>
+
+<%
+# FIND OBJECT LIST FOR REPEATER
+
+@objects = repeating.capitalize.constantize.all
+
+if(value)
+  @selected_objects = value.split(',')
+end
+%>
+
+// Selectize for objects
+var updateInput = function() {
+  return function() {
+    var items = $('#selectize-container-<%= unique_key %> .selectize-input .item');
+    var lista = ""
+      items.each(function(index) {
+       lista += $(this).attr('data-value') + ","
+      });
+    $('#select-<%= unique_key %>-hidden').val(lista);
+  };
+};
+
+$('#select-<%= unique_key %>').selectize({
+  plugins: ['remove_button'],
+  persist: false,
+  maxItems: null,
+  valueField: 'id',
+  labelField: 'title',
+  searchField: ['title', 'id'],
+  options: [
+    <% @objects.each do |object| %>
+    {id: '<%= object.id %>', title: '<%= object.title %>'},
+    <% end %>
+  ],
+  items: [
+    <% if (@selected_objects) %>
+      <% @selected_objects.each do |id| %>
+        <%= raw "'#{id}'," %>
+      <% end %>
+    <% end %>
+  ],
+  onChange: updateInput(),
+});
+
+</script>

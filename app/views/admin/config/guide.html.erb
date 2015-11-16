@@ -1,0 +1,47 @@
+<% provide(:title, "Configuration") %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12 col-lg-12">
+      <div class="page-header">
+        <h2>Configurazione per il primo utilizzo</h2>
+      </div>
+      <h3>Modificare il Gemfile</h3>
+      Per configurare correttamente l'applicazione è necessario impostare la propria versione di ruby nel <i>Gemfile</i>.<br>
+      Oltre alla versione di ruby, è  necessario impostare il database da utilizzare in modalità :production.<br>
+      <h3>Configurare Paperclip</h3>
+      L'applicazione utilizza Paperclip per la gestione degli allegati. Per configurare correttamente la gemma si rimanda alla <a href="https://github.com/thoughtbot/paperclip">pagina ufficiale</a>.
+    </div>
+    <div class="col-md-12 col-lg-12">
+      <div class="page-header">
+        <h2>Configurazione lingue</h2>
+      </div>
+      <h3>Settare lingua di default del sito</h3>
+      Per impostare la lingua di default del sito bisogna modificare il valore della variabile "config.i18n.default_locale" nel file <i>config/application.rb</i>.<br>
+      <h3>Settare lingua di default del back-office</h3>
+      Per impostare la lingua di default del back-office bisogna modificare il valore della variabile "$language_file" nel file <i>config/application.rb</i>.<br>
+      Momentaneamente l'applicazione supporta solamente la lingua inglese e italiana.<br>
+      <h3>Attivare il multilingua</h3>
+      È possibile attivare il multilingua dalla sezione "Settings" del back-office. Qualsiasi modifica avvenga alle lingue necessita il riavvio del server per il corretto funzionamento della applicazione.<br>
+    </div>
+    <div class="col-md-12 col-lg-12">
+      <div class="page-header">
+        <h2>Configurazione per il deploy</h2>
+      </div>
+      Prima di passare al deploy in :production prendiamo la nostra applicazione in :development e nella pagina settings premiamo il pulsante "Generate Migration".<br>
+      Verranno create le migrazioni e i seeds dei vari oggetti custom creati in :development.<br>
+      Per rieseguire i files in :production dobbiamo spostare il contenuto di gams-migrate in migrate ed eseguire da console i seguenti comandi:<br>
+      <br>
+      - <b>rake db:migrate</b><br>
+      - <b>rake db:setup</b><br>
+      - <b>rake config:start</b><br>
+    </div>
+    <div class="col-md-12 col-lg-12 text-right">
+      <br>
+      <a href="<%= admin_settings_path %>" class="btn btn-primary">Back</a>
+    </div>
+  </div>
+</div>

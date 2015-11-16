@@ -1,0 +1,18 @@
+<h4 class="field-title"><%= title %></h4>
+<% if(!image.blank?) %>
+  <a href="#" class="thumbnail">
+    <img src="<%= image.url(:medium) %>" alt="">
+  </a>
+<% end %>
+<% if(image.blank?) %>
+<div class="input-group">
+  <label class="input-group-addon"><span class="glyphicon glyphicon-picture" aria-hidden="true"></label>
+  <input class="form-control" type="file" name="<%= name %>" value="">
+</div>
+<% end %>
+<% if(!image.blank?) # remove image from the fields table %>
+  <div class="text-right">
+    <%= link_to "Remove", delete_url, :method => :delete, data: {confirm: "Do you really want to remove the image?"}, style: "color: red" %>
+  </div>
+<% end %>
+<br>

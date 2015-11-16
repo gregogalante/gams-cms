@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) %> | Admin</title>
+  <%= stylesheet_link_tag    "admin/admin", :media => "all" %>
+  <%= javascript_include_tag "admin/admin" %>
+</head>
+<body style="padding-top: 70px">
+
+<% if (session[:user]) %>
+  <%= render 'layouts/admin/header' %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <% flash.each do |msg_type, msg| %>
+        <div class="alert alert-<%= msg_type %>"><%= msg %></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <% if (session[:user]) %>
+      <div class="col-md-4 col-lg-3">
+        <%= render 'layouts/admin/menu' %>
+      </div>
+      <div class="col-md-8 col-lg-9">
+        <%= yield %>
+        <%= render 'layouts/admin/footer' %>
+      </div>
+    <% else %>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-sm-offset-3 col-sm-offset-4 col-lg-offset-4">
+        <%= yield %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+</body>
+</html>

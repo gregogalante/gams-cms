@@ -1,0 +1,45 @@
+<% provide(:title, $language['user_plural'].capitalize) %>
+
+<div class="home panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-8 col-lg-8">
+      <div class="list-group">
+      <%= search_form_for [:admin, @question] do |f| %>
+        <div class="input-group">
+          <%= f.search_field :name_cont, class: 'form-control', placeholder: $language['name'].capitalize %>
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default" type="button"><%= $language['search'].capitalize %></button>
+          </span>
+        </div><!-- /input-group -->
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-4 col-lg-4 text-right">
+      <%= link_to $language['new'].capitalize, new_admin_user_path, class: "btn btn-primary" %>
+      <br><br>
+    </div>
+    <div class="col-md-12 col-lg-12" >
+
+      <% if @users.blank? %>
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only"></span>
+          <%= $language['user_not_found'] %>
+        </div>
+      <% else %>
+        <% @users.each do |user| %>
+        <a href="<%= admin_user_path(user.id) %>" class="list-group-item">
+          <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> <b><%= user.name %></b>
+        </a>
+        <% end %>
+      <% end %>
+
+      <div style="text-align: center" >
+        <%= will_paginate @users, :renderer => BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+</div>

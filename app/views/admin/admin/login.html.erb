@@ -1,0 +1,23 @@
+<% provide(:title, "Login") %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body text-center">
+    <%= form_for(User.new, :url => {:action => :access, :controller => :admin}) do |f| %>
+      <div class="input-group">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+        <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
+      </div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+        <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+      </div>
+      <br>
+      <%= f.submit "Login", class: 'btn btn-primary' %>
+      <br><br>
+    <% end %>
+  </div>
+</div>

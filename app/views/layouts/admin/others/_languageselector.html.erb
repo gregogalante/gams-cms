@@ -1,0 +1,11 @@
+<nav>
+  <ul class="pagination">
+    <% languages_list.length.times do |index| %>
+      <% if(params[:locale].to_s === languages_list[index].to_s) %>
+        <li class="active"><a href="<%=languages_url[index]%>"><%= languages_list[index] %></a></li>
+      <% else %>
+        <li><a href="<%=languages_url[index]%>"><%= languages_list[index] %></a></li>
+      <% end %>
+    <% end %>
+  </ul>
+</nav>

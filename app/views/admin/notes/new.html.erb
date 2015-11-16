@@ -1,0 +1,45 @@
+<% provide(:title, "New Note") %>
+
+<div class="home panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for [:admin, @note] do |f| %>
+      <div class="col-md-6 col-lg-8">
+        <h4 class="field-title"><%= $language['title'].capitalize %></h4>
+        <div class="input-group">
+          <label class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></label>
+          <input class="form-control" type="text"  name="note[title]">
+        </div>
+        <br>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <h4 class="field-title"><%= $language['style'].capitalize %></h4>
+        <select class="selectpicker" name="note[style]" data-live-search="true">
+          <option value="success"><%= $language['style'].capitalize %> 1</option>
+          <option value="info"><%= $language['style'].capitalize %> 2</option>
+          <option value="warning"><%= $language['style'].capitalize %> 3</option>
+          <option value="danger"><%= $language['style'].capitalize %> 4</option>
+        </select>
+      </div>
+      <div class="col-md-12 col-lg-12">
+        <h4 class="field-title"><%= $language['content'].capitalize %></h4>
+        <textarea class='wysihtml5 form-control' placeholder="Enter text" style="width: 100%; height: 300px;" name="note[content]"></textarea>
+        <br>
+        <script type="text/javascript">
+          $(document).ready(function(){
+
+            $('.wysihtml5').each(function(i, elem) {
+              $(elem).wysihtml5();
+            });
+
+          })
+        </script>
+      </div>
+      <div class="col-md-12 col-lg-12">
+        <input class="btn btn-primary" type="submit" value="<%= $language['save'].capitalize %>">
+      </div>
+    <% end %>
+  </div>
+</div>

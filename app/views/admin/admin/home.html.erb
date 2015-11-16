@@ -1,0 +1,32 @@
+<% provide(:title, "Home") %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12 col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= $language['user_singular'].capitalize %></h3>
+        </div>
+        <div class="panel-body">
+          <%= $language['name'].capitalize %>: <b><%= @user.name %></b></br>
+          <%= $language['email'].capitalize %>: <b><%= @user.email %></b></br>
+        </div>
+      </div>
+    </div>
+    <% if (!@notes.empty?) %>
+      <div class="col-md-12 col-lg-12">
+        <h4 class="field-title"><%= $language['menu_notes'].capitalize %></h4>
+      </div>
+    <% end %>
+    <% @notes.each do |note| %>
+    <div class="col-md-6 col-lg-6">
+      <div class="panel panel-default panel-<%= note.style %>">
+        <a class="panel-heading" href="<%= admin_note_path(note) %>" style="display: block"><%= note.title %></a>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

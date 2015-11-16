@@ -1,0 +1,46 @@
+<% provide(:title, "#{$language['edit'].capitalize} #{$language['user_singular']}") %>
+
+<div class="home panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for [:admin, @user] do |f| %>
+      <div class="col-md-12 col-lg-12">
+        <h4 class="field-title"><%= $language['name'].capitalize %></h4>
+        <div class="input-group">
+          <label class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></label>
+          <input class="form-control" type="text"  name="user[name]" value="<%= @user.name %>">
+        </div>
+        <br>
+      </div>
+      <div class="col-md-12 col-lg-12">
+        <h4 class="field-title"><%= $language['email'].capitalize %></h4>
+        <div class="input-group">
+          <label class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></label>
+          <input class="form-control" type="email"  name="user[email]" value="<%= @user.email %>">
+        </div>
+        <br>
+      </div>
+      <div class="col-md-6 col-lg-6">
+        <h4 class="field-title"><%= $language['password'].capitalize %></h4>
+        <div class="input-group">
+          <label class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></label>
+          <input class="form-control" type="password"  name="user[password]">
+        </div>
+        <br>
+      </div>
+      <div class="col-md-6 col-lg-6">
+        <h4 class="field-title"><%= $language['password_confirmation'].capitalize %></h4>
+        <div class="input-group">
+          <label class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></label>
+          <input class="form-control" type="password"  name="user[password_confirmation]">
+        </div>
+        <br>
+      </div>
+      <div class="col-md-12 col-lg-12">
+        <input class="btn btn-primary" type="submit" value="<%= $language['save'].capitalize %>">
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+# DEFAULT
+welcome: benvenuto
+name: nome
+email: email
+permissions: permessi
+administrator: amministratore
+editor: editore
+collaborator: collaboratore
+password: password
+password_confirmation: ripeti password
+title: titolo
+style: stile
+content: contenuto
+
+save: salva
+search: cerca
+new: nuovo
+edit: modifica
+delete: elimina
+show: visualizza
+url: url
+
+error: Mi spiace, qualcosa è andato storto
+
+# SECURITY
+login_bad: Email o password sbagliata
+logout_good: Sei uscito correttamente
+no_login: Devi prima fare il login
+permissions_error: Non hai i permessi per accedere a questa funzione
+
+# ADMIN
+setting_updated: Le impostazioni del sito sono state aggiornate
+
+# HEADER
+header_logout: Logout
+header_website: Sito web
+header_dashboard: Dashboard
+
+# MENU
+menu_home: Home
+menu_users: Utenti
+menu_pages: Pagine
+menu_notes: Note
+menu_settings: Impostazioni
+
+# USERS
+user_singular: utente
+user_plural: utenti
+
+user_saved: Il nuovo utente è stato creato
+user_not_saved: Il nuovo utente non è stao creato
+user_updated: L'utente è stato aggiornato
+user_not_updated: L'utente non è stato aggiornato
+user_deleted: L'utente è stato eliminato
+user_not_found: Nessun utente trovato
+user_delete_confirmation: Vuoi veramente eliminare l'utente?
+
+# PAGES
+page_singular: pagina
+page_plural: pagine
+
+page_saved: La nuova pagina è stata creata
+page_not_saved: La nuova pagina non è stata creata
+page_updated: La pagina è stata aggiornata
+page_not_updated: La pagina non è stata aggiornata
+page_deleted: La pagina è stata eliminata
+page_not_found: Nessuna pagina trovata
+page_delete_confirmation: Vuoi veramente eliminare la pagina?
+
+# NOTES
+note_singular: nota
+note_plural: note
+
+note_saved: La nuova nota è stata creata
+note_not_saved: La nuova nota non è stata creata
+note_updated: La nota è stata aggiornata
+note_not_updated: La nota non è stata aggiornata
+note_deleted: La nota è stata eliminata
+note_not_found: Nessuna nota trovata
+note_delete_confirmation: Vuoi veramente eliminare la nota?
+
+# TYPES
+type_singular: oggetto
+type_plural: oggetti
+
+type_saved: Il nuovo oggetto è stato creato
+type_not_saved: Il nuovo oggetto non è stato creato
+type_updated: L'oggetto è stato aggiornato
+type_not_updated: L'oggetto non è stato aggiornato
+type_deleted: L'oggetto è stato eliminato
+type_not_found: Nessun oggetto trovato
+type_delete_confirmation: Vuoi veramente eliminare l'oggetto?
+
+# ATTACHMENTS
+attachment_deleted: L'allegato è stato eliminato
+attachment_not_found: Il campo non ha alcun allegato

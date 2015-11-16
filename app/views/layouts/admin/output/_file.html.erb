@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= title %></h3>
+  </div>
+  <div class="panel-body">
+    <% if(!file.blank?) %>
+    <a href="<%= asset_url(file.url) %>"><%= asset_url(file.url) %></a>
+    <% end %>
+  </div>
+</div>

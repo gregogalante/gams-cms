@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    <% if(current_page?('/')) %>
+      <%= $gams_config['app_name'] %>
+    <% else %>
+      <%= @head_title %> | <%= $gams_config['app_name'] %>
+    <% end %>
+  </title>
+  <%= stylesheet_link_tag    "template/template", :media => "all" %>
+  <%= javascript_include_tag "template/template" %>
+</head>
+<body>
+
+<%= render 'layouts/template/header' %>
+
+<%= yield %>
+
+<%= render 'layouts/template/footer' %>
+
+</body>
+</html>

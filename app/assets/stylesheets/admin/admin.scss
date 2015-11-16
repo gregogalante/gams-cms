@@ -1,0 +1,58 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require selectize
+*= require selectize.bootstrap3
+ *= require_self
+ */
+
+/* new bootstrap variables */
+$body-bg: #ecf0f1;
+$brand-primary: #3a5168;
+
+@import 'bootstrap-select';
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+.panel-title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.field-title {
+  border-bottom: solid 1px $brand-primary;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+.media-content {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+#partial-menu {
+  .panel-heading {
+    cursor: pointer;
+  }
+  .list-group-item {
+    font-weight: bold;
+  }
+}
+
+#console {
+  display: none;
+}

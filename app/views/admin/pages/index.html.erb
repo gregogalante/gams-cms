@@ -1,0 +1,21 @@
+<% provide(:title, $language['page_plural'].capitalize) %>
+
+<div class="home panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12 col-lg-12">
+      <div class="list-group">
+        <% @pages.each do |page| %>
+        <a href="<%= admin_page_path(page.id) %>" class="list-group-item">
+          <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> <b><%= page.title %></b>
+        </a>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-12" style="text-align: center">
+      <%= will_paginate @pages, :renderer => BootstrapPagination::Rails %>
+    </div>
+  </div>
+</div>

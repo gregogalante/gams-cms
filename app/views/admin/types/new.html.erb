@@ -1,0 +1,59 @@
+<% provide(:title, "#{$language['new'].capitalize} #{@type.title_s}") %>
+
+<div class="home panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for [:admin, @type_object],:url => admin_create_type_path, :html => { :multipart => true } do |f| %>
+
+      <input type="hidden" name="type" value="<%= @type.name %>">
+
+      <div class="col-md-6 col-lg-6">
+        <h4 class="field-title"><%= $language['title'].capitalize %></h4>
+        <div class="input-group">
+          <label class="input-group-addon"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></label>
+          <input id="title" class="form-control" type="text"  name="<%= "#{@type.name}[#{@title_field_name}]" %>" value="">
+        </div>
+        <br>
+      </div>
+
+      <div class="col-md-6 col-lg-6">
+        <h4 class="field-title"><%= $language['url'].capitalize %></h4>
+        <div class="input-group">
+          <label class="input-group-addon"><span class="glyphicon glyphicon-link" aria-hidden="true"></label>
+          <input id="url" class="form-control" type="text"  name="<%= "#{@type.name}[url]" %>" value="">
+        </div>
+        <br>
+      </div>
+
+      <% @typefields.each do |typefield| %>
+      <%
+      typefield_name = typefield.name
+      if(params[:locale] and typefield.type_field != "image" and typefield.type_field != "file")
+        typefield_name = "#{typefield.name}_#{params[:locale]}"
+      elsif(typefield.type_field != "image" and typefield.type_field != "file")
+        typefield_name = "#{typefield.name}_#{I18n.default_locale}"
+      end
+      %>
+      <div class="col-md-12 col-lg-12">
+        <%= putFieldName(typefield.name) %>
+        <%= getInputTypefield(typefield.name, @type_object.id, @type.name, "#{@type.name}[#{typefield_name}]") %>
+      </div>
+      <% end %>
+
+      <div class="col-md-12 col-lg-12">
+        <input class="btn btn-primary" type="submit" value="<%= $language['save'].capitalize %>">
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+
+  // Object title to url
+  $('#title').change(function() {
+    $('#url').val($('#title').val().toLowerCase().replace(' ', '-'));
+  })
+
+</script>
