@@ -107,7 +107,7 @@ class Admin::AdminController < ActionController::Base
       page.write("# DEFAULT TYPES \n")
       @types = Type.all
       @types.each do |object_type|
-        page.write("Type.create(title: '#{object_type.title}', title_p: '#{object_type.title_p}', url: '#{object_type.url}') \n")
+        page.write("Type.create(name: '#{object_type.name}', title_s: '#{object_type.title_s}', title_p: '#{object_type.title_p}', url: '#{object_type.url}') \n")
       end
       # generate typefields seeds
       page.write("# DEFAULT TYPEFIELDS \n")
@@ -120,11 +120,11 @@ class Admin::AdminController < ActionController::Base
     FileUtils.rm_rf(Dir.glob("#{Rails.root}/db/gams-migrate/*"))
     # generate new migration file
     Type.all.each do |type|
-        File.open("#{Rails.root}/db/gams-migrate/#{Time.now.to_s(:number)}_create_#{type.title.downcase}.rb", "w+") do |page|
-          page.write("class Create#{type.title.capitalize} < ActiveRecord::Migration \n   def change \n ")
-          page.write("  create_table :#{type.title.downcase} do |t| \n    t.timestamps null: false \n")
+        File.open("#{Rails.root}/db/gams-migrate/#{Time.now.to_s(:number)}_create_#{type.name.downcase}.rb", "w+") do |page|
+          page.write("class Create#{type.name.capitalize} < ActiveRecord::Migration \n   def change \n ")
+          page.write("  create_table :#{type.name.downcase} do |t| \n    t.timestamps null: false \n")
             #Get tables
-            table = type.title.capitalize.constantize
+            table = type.name.capitalize.constantize
             table_list = table.new.attribute_names.to_a
             table_list.each do |table|
               if(table != 'id' && table != 'created_at' && table != 'updated_at')

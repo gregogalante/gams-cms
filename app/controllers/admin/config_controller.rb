@@ -75,17 +75,17 @@ class Admin::ConfigController < Admin::AdminController
         end
         # add languages to types
         Type.all.each do |type|
-          table = type.title.capitalize.constantize
+          table = type.name.capitalize.constantize
           # translate title
-          if(!ActiveRecord::Base.connection.column_exists?(type.title, "title_#{language}"))
-            ActiveRecord::Migration.add_column type.title, "title_#{language}", :string
+          if(!ActiveRecord::Base.connection.column_exists?(type.name, "title_#{language}"))
+            ActiveRecord::Migration.add_column type.name, "title_#{language}", :string
           end
           # translate fields
           typefields = Typefield.where(type_id: type.id)
           typefields.each do |typefield|
             typefield_db_type = table.column_for_attribute("#{typefield.name}_#{I18n.default_locale}").type
-            if(!ActiveRecord::Base.connection.column_exists?(type.title, "#{typefield.name}_#{language}"))
-              ActiveRecord::Migration.add_column type.title, "#{typefield.name}_#{language}", typefield_db_type
+            if(!ActiveRecord::Base.connection.column_exists?(type.name, "#{typefield.name}_#{language}"))
+              ActiveRecord::Migration.add_column type.name, "#{typefield.name}_#{language}", typefield_db_type
             end
           end
         end
