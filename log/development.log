@@ -1,0 +1,217 @@
+  [1m[36m (219.8ms)[0m  [1mCREATE TABLE "fields" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type_field" varchar, "name" varchar, "title" varchar, "value_it" text, "repeating" varchar, "position" integer, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "page_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (221.9ms)[0m  CREATE TABLE "notes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "style" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (266.5ms)[0m  [1mCREATE TABLE "pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (209.9ms)[0m  CREATE TABLE "typefields" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type_field" varchar, "name" varchar, "title" varchar, "position" integer, "type_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (232.7ms)[0m  [1mCREATE TABLE "types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "title_s" varchar, "title_p" varchar, "url" varchar, "visible" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (188.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password" varchar, "password_digest" varchar, "permissions" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (237.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (754.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (155.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151110131258')[0m
+  [1m[35m (176.7ms)[0m  CREATE TABLE "fields" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type_field" varchar, "name" varchar, "title" varchar, "value_it" text, "repeating" varchar, "position" integer, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "page_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (243.8ms)[0m  [1mCREATE TABLE "notes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "style" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (210.7ms)[0m  CREATE TABLE "pages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (232.7ms)[0m  [1mCREATE TABLE "typefields" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "type_field" varchar, "name" varchar, "title" varchar, "position" integer, "type_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (242.8ms)[0m  CREATE TABLE "types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "title_s" varchar, "title_p" varchar, "url" varchar, "visible" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (189.9ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password" varchar, "password_digest" varchar, "permissions" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (187.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (222.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (188.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151110131258')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('admin@mail.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "permissions", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Gams Admin"], ["email", "admin@mail.com"], ["password_digest", "$2a$10$QVqj3MdkmUMzWQOTdeBed.NBFYEq3gFxCBTSN.msn3LNlc6o06b5e"], ["permissions", 0], ["created_at", "2015-11-17 07:45:36.700538"], ["updated_at", "2015-11-17 07:45:36.700538"]]
+  [1m[36m (169.2ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-17 08:45:47 +0100
+Processing by Template::TemplateController#homepage as HTML
+  [1m[36mPage Load (0.1ms)[0m  [1mSELECT  "pages".* FROM "pages" WHERE "pages"."url" = ? LIMIT 1[0m  [["url", "homepage"]]
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 88ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-11-17 08:45:47 +0100
+Processing by Admin::AdminController#login as HTML
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 2498ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-17 08:45:49 +0100
+Processing by Template::TemplateController#homepage as HTML
+  [1m[35mPage Load (0.1ms)[0m  SELECT  "pages".* FROM "pages" WHERE "pages"."url" = ? LIMIT 1  [["url", "homepage"]]
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2015-11-17 08:45:49 +0100
+Processing by Admin::AdminController#login as HTML
+Redirected to http://localhost:3000/admin/home
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/home" for 127.0.0.1 at 2015-11-17 08:45:50 +0100
+Processing by Admin::AdminController#home as HTML
+  [1m[36mNote Load (0.1ms)[0m  [1mSELECT  "notes".* FROM "notes"  ORDER BY "notes"."id" DESC LIMIT 4[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered admin/admin/home.html.erb within layouts/admin/admin (21.9ms)
+  Rendered layouts/admin/_header.html.erb (1.7ms)
+  [1m[36mType Load (0.1ms)[0m  [1mSELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC[0m
+  Rendered layouts/admin/_menu.html.erb (43.7ms)
+  Rendered layouts/admin/_footer.html.erb (0.6ms)
+Completed 200 OK in 5381ms (Views: 5350.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/admin/admin.self-1f28b581a94804005f71aa7af6fc34175f88b9652840866af6d53638c72cd3b3.css?body=1" for 127.0.0.1 at 2015-11-17 08:45:55 +0100
+
+
+Started GET "/admin/settings" for 127.0.0.1 at 2015-11-17 08:46:11 +0100
+Processing by Admin::AdminController#settings as HTML
+  Rendered admin/admin/settings.html.erb within layouts/admin/admin (3.3ms)
+  Rendered layouts/admin/_header.html.erb (0.6ms)
+  [1m[35mType Load (0.1ms)[0m  SELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC
+  Rendered layouts/admin/_menu.html.erb (1.1ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 218ms (Views: 216.7ms | ActiveRecord: 0.1ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (13.3ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (34.4ms)
+
+
+Started GET "/admin/settings/config/language/configuration" for 127.0.0.1 at 2015-11-17 08:46:17 +0100
+Processing by Admin::ConfigController#language_configuration as HTML
+  Rendered admin/config/language_configuration.html.erb within layouts/admin/admin (1.2ms)
+  Rendered layouts/admin/_header.html.erb (0.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC[0m
+  Rendered layouts/admin/_menu.html.erb (1.3ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 243ms (Views: 202.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/settings" for 127.0.0.1 at 2015-11-17 08:46:35 +0100
+Processing by Admin::AdminController#settings as HTML
+  Rendered admin/admin/settings.html.erb within layouts/admin/admin (4.8ms)
+  Rendered layouts/admin/_header.html.erb (0.6ms)
+  [1m[35mType Load (0.1ms)[0m  SELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC
+  Rendered layouts/admin/_menu.html.erb (1.2ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 197ms (Views: 195.4ms | ActiveRecord: 0.1ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (12.1ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (20.8ms)
+
+
+Started GET "/admin/settings/config/page/new" for 127.0.0.1 at 2015-11-17 08:46:38 +0100
+Processing by Admin::ConfigController#page_new as HTML
+  Rendered admin/config/page_new.html.erb within layouts/admin/admin (1.0ms)
+  Rendered layouts/admin/_header.html.erb (0.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC[0m
+  Rendered layouts/admin/_menu.html.erb (1.1ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 229ms (Views: 228.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/settings/config/field/new" for 127.0.0.1 at 2015-11-17 08:46:41 +0100
+Processing by Admin::ConfigController#field_new as HTML
+  [1m[35mPage Load (0.1ms)[0m  SELECT "pages".* FROM "pages"
+  Rendered admin/config/field_new.html.erb within layouts/admin/admin (1.5ms)
+  Rendered layouts/admin/_header.html.erb (0.7ms)
+  [1m[36mType Load (0.3ms)[0m  [1mSELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC[0m
+  Rendered layouts/admin/_menu.html.erb (2.9ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 235ms (Views: 234.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/admin/settings/config/repeater/new" for 127.0.0.1 at 2015-11-17 08:46:48 +0100
+Processing by Admin::ConfigController#repeater_new as HTML
+  [1m[35mType Load (0.1ms)[0m  SELECT "types".* FROM "types"
+  [1m[36mPage Load (0.1ms)[0m  [1mSELECT "pages".* FROM "pages"[0m
+  Rendered admin/config/repeater_new.html.erb within layouts/admin/admin (1.8ms)
+  Rendered layouts/admin/_header.html.erb (0.6ms)
+  [1m[35mType Load (0.1ms)[0m  SELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC
+  Rendered layouts/admin/_menu.html.erb (1.2ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 200ms (Views: 198.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/settings/config/type/new" for 127.0.0.1 at 2015-11-17 08:46:52 +0100
+Processing by Admin::ConfigController#type_new as HTML
+  Rendered admin/config/type_new.html.erb within layouts/admin/admin (1.6ms)
+  Rendered layouts/admin/_header.html.erb (0.6ms)
+  [1m[36mType Load (0.1ms)[0m  [1mSELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC[0m
+  Rendered layouts/admin/_menu.html.erb (1.2ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 209ms (Views: 208.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/admin/settings/config/typefield/new" for 127.0.0.1 at 2015-11-17 08:46:54 +0100
+Processing by Admin::ConfigController#typefield_new as HTML
+  [1m[35mType Load (0.1ms)[0m  SELECT "types".* FROM "types"
+  Rendered admin/config/typefield_new.html.erb within layouts/admin/admin (2.3ms)
+  Rendered layouts/admin/_header.html.erb (0.6ms)
+  [1m[36mType Load (0.1ms)[0m  [1mSELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC[0m
+  Rendered layouts/admin/_menu.html.erb (1.2ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 195ms (Views: 193.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/notes" for 127.0.0.1 at 2015-11-17 08:47:00 +0100
+Processing by Admin::NotesController#index as HTML
+  [1m[35mNote Load (0.2ms)[0m  SELECT  "notes".* FROM "notes"  ORDER BY created_at DESC LIMIT 12 OFFSET 0
+  Rendered admin/notes/index.html.erb within layouts/admin/admin (2.1ms)
+  Rendered layouts/admin/_header.html.erb (0.7ms)
+  [1m[36mType Load (0.3ms)[0m  [1mSELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC[0m
+  Rendered layouts/admin/_menu.html.erb (1.8ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 197ms (Views: 195.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2015-11-17 08:47:01 +0100
+Processing by Admin::UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY name ASC LIMIT 12 OFFSET 0
+  Rendered admin/users/index.html.erb within layouts/admin/admin (41.3ms)
+  Rendered layouts/admin/_header.html.erb (0.7ms)
+  [1m[36mType Load (0.1ms)[0m  [1mSELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC[0m
+  Rendered layouts/admin/_menu.html.erb (1.4ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 244ms (Views: 239.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/users/1" for 127.0.0.1 at 2015-11-17 08:47:03 +0100
+Processing by Admin::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered admin/users/show.html.erb within layouts/admin/admin (2.0ms)
+  Rendered layouts/admin/_header.html.erb (0.7ms)
+  [1m[36mType Load (0.2ms)[0m  [1mSELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC[0m
+  Rendered layouts/admin/_menu.html.erb (1.4ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 186ms (Views: 184.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/settings" for 127.0.0.1 at 2015-11-17 08:47:05 +0100
+Processing by Admin::AdminController#settings as HTML
+  Rendered admin/admin/settings.html.erb within layouts/admin/admin (3.0ms)
+  Rendered layouts/admin/_header.html.erb (0.6ms)
+  [1m[35mType Load (0.1ms)[0m  SELECT "types".* FROM "types" WHERE "types"."visible" = 't'  ORDER BY title_p DESC
+  Rendered layouts/admin/_menu.html.erb (1.2ms)
+  Rendered layouts/admin/_footer.html.erb (0.0ms)
+Completed 200 OK in 196ms (Views: 194.7ms | ActiveRecord: 0.1ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (12.5ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /home/gregorio/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (21.3ms)

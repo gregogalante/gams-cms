@@ -6,7 +6,6 @@ Gams must be configurated from console before being used.
 
 - Run <b>rake reset:start</b>
 - Run <b>rake db:setup</b> to configure the database
-- Run <b>rake config:start</b> to configure the CMS
 - Go to yoursite/admin to login!
 
 You can login to the CMS using '<b>admin@mail.com</b>' as email and '<b>ilovegamscms</b>' as password.
