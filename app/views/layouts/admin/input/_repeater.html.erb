@@ -1,7 +1,13 @@
 <h4 class="field-title"><%= title %></h4>
 <div id="selectize-container-<%= unique_key %>">
 <select id="select-<%= unique_key %>" class="selectized" placeholder="Select objects" multiple="multiple" tabindex="-1" style="display: none;"></select>
-<input id="select-<%= unique_key %>-hidden" type="hidden" name="<%= name %>">
+<input id="select-<%= unique_key %>-hidden" type="hidden" name="<%= name %>" value="
+<% if (@selected_objects) %>
+  <% @selected_objects.each do |id| %>
+    <%= raw "#{id}," %>
+  <% end %>
+<% end %>
+">
 </div>
 <br>
 

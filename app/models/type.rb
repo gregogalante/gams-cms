@@ -2,7 +2,7 @@ class Type < ActiveRecord::Base
 
   before_save {
     self.url = self.url.parameterize('-')
-    self.name = self.name.parameterize('_')
+    self.name = self.name.parameterize('')
   }
 
   has_many :typefields

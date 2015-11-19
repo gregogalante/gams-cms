@@ -95,25 +95,25 @@ class Admin::AdminController < ActionController::Base
       page.write("# DEFAULT PAGES \n")
       @pages = Page.all
       @pages.each do |object_page|
-        page.write("Page.create(title: '#{object_page.title}', url: '#{object_page.url}') \n")
+        page.write('Page.create(title: "'+object_page.title+'", url: "'+object_page.url+'") \n')
       end
       # generate fields seeds
       page.write("# DEFAULT FIELDS \n")
       @fields = Field.all
       @fields.each do |object_field|
-        page.write("Field.create(type_field: '#{object_field.type_field}', name: '#{object_field.name}', title: '#{object_field.title}', repeating: '#{object_field.repeating}', page_id: '#{object_field.page_id}') \n")
+        page.write('Field.create(type_field: "'+object_field.type_field+'", name: "'+object_field.name+'", title: "'+object_field.title+'", repeating: "'+object_field.repeating+'", page_id: "'+object_field.page_id+'", position: "'+object_field.position+'") \n')
       end
       # generate types seeds
       page.write("# DEFAULT TYPES \n")
       @types = Type.all
       @types.each do |object_type|
-        page.write("Type.create(name: '#{object_type.name}', title_s: '#{object_type.title_s}', title_p: '#{object_type.title_p}', url: '#{object_type.url}') \n")
+        page.write('Type.create(name: "'+object_type.name+'", title_s: "'+object_type.title_s+'", title_p: "'+object_type.title_p+'", url: "'+object_type.url+'", visible: '+object.visible+') \n')
       end
       # generate typefields seeds
       page.write("# DEFAULT TYPEFIELDS \n")
       @typefields = Typefield.all
       @typefields.each do |object_typefield|
-        page.write("Typefield.create(type_field: '#{object_typefield.type_field}', name: '#{object_typefield.name}', title: '#{object_typefield.title}', type_id: '#{object_typefield.type_id}') \n")
+        page.write('Typefield.create(type_field: "'+object_typefield.type_field+'", name: "'+object_typefield.name+'", title: "'+object_typefield.title+'", type_id: "'+object_typefield.type_id+'", position: "'+object_typefield.position+'") \n')
       end
     end
     # delete old migrations files
