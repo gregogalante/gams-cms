@@ -52,8 +52,8 @@
 <script>
 
   // Object title to url
-  $('#title').change(function() {
-    $('#url').val($('#title').val().toLowerCase().replace(' ', '-'));
+  $('#title').on('keyup',function(){
+    $('#url').val($('#title').val().split(' ').join('-').toLowerCase());
   })
 
 </script>

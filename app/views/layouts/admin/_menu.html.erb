@@ -6,15 +6,15 @@
     </h3>
   </div>
   <div class="list-group collapse" id="menu-collapse">
-    <a href="<%= admin_path %>" class="list-group-item">
+    <a href="<%= admin_home_path %>" class="list-group-item <%= setActive(admin_home_path) %>">
       <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
       <%= $language['menu_home'] %>
     </a>
-    <a href="<%= admin_users_path %>" class="list-group-item">
+    <a href="<%= admin_users_path %>" class="list-group-item <%= setActive(admin_users_path) %>">
       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
       <%= $language['menu_users'] %>
     </a>
-    <a href="<%= admin_pages_path %>" class="list-group-item">
+    <a href="<%= admin_pages_path %>" class="list-group-item <%= setActive(admin_pages_path) %>">
       <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
       <%= $language['menu_pages'] %>
     </a>
@@ -23,7 +23,7 @@
     <% types = Type.where(visible: true).order('title_p DESC') %>
 
     <% types.each do |type| %>
-      <a href="<%= admin_types_path(type.name) %>" class="list-group-item">
+      <a href="<%= admin_types_path(type.name) %>" class="list-group-item <%= setActive(admin_types_path(type.name)) %>">
         <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
         <%= type.title_p.capitalize %>
         <span class="badge"><%= type.name.capitalize.constantize.count %></span>
@@ -31,14 +31,14 @@
     <% end %>
     <% # End of the list %>
 
-    <a href="<%= admin_notes_path %>" class="list-group-item">
+    <a href="<%= admin_notes_path %>" class="list-group-item <%= setActive(admin_notes_path) %>">
       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
       <%= $language['menu_notes'] %>
     </a>
 
     <% # Show settings link only to administrator users %>
     <% if(session[:user_permissions] and session[:user_permissions] === 0) %>
-    <a href="<%= admin_settings_path %>" class="list-group-item">
+    <a href="<%= admin_settings_path %>" class="list-group-item <%= setActive(admin_settings_path) %>">
       <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
       <%= $language['menu_settings'] %>
     </a>

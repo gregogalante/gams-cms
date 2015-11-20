@@ -166,4 +166,11 @@ module Admin::AdminHelper
     end
   end
 
+  # Set menu voice active if user is in its Page
+  def setActive(voice_url)
+    if(voice_url === "#{request.original_url}")
+      return 'active'
+    end
+  end
+
 end
