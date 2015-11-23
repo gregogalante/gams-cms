@@ -81,7 +81,7 @@ module Admin::AdminHelper
     # image field
     when "image"
       if(!type_id.blank?)
-        delete_url = admin_delete_typefield_attachment_path(type_metadata.title,type_id,field_name)
+        delete_url = admin_delete_typefield_attachment_path(type_metadata.name,type_id,field_name)
       else
         delete_url = nil
       end
@@ -89,7 +89,7 @@ module Admin::AdminHelper
     # file field
     when "file"
       if(!type_id.blank?)
-        delete_url = admin_delete_typefield_attachment_path(type_metadata.title,type_id,field_name)
+        delete_url = admin_delete_typefield_attachment_path(type_metadata.name,type_id,field_name)
       else
         delete_url = nil
       end

@@ -1,5 +1,15 @@
 module Template::TemplateHelper
 
+  # language attribute
+  def getLang()
+    if(params[:locale])
+      return params[:locale]
+    else
+      return I18n.default_locale
+    end
+  end
+
+  # page field
   def get_field(field_name, page_id)
     if (field = Field.find_by(page_id: page_id, name: field_name))
       case field.type_field
@@ -30,14 +40,14 @@ module Template::TemplateHelper
     end
   end
 
-  # type index
+  # type index object list
   def get_typeobjects()
     if(@type_objects)
       return @type_objects
     end
   end
 
-  # type show
+  # type show object field
   def get_typefield(field_name, type_field)
     if(@type_object)
       case type_field
