@@ -65,6 +65,39 @@ module Admin::AdminHelper
     end
   end
 
+  # Return the call to the right output tag of a typefield
+  def getOutputTypefield(field_name, type_id, type_name)
+    type = type_name.capitalize.constantize.find(type_id)
+    # get metadata for the type
+    type_metadata = Type.find_by(name: type_name)
+    # get metadata for the field
+    field_metadata = Typefield.find_by(name: field_name, type_id: type_metadata.id)
+
+    case field_metadata.type_field
+    # image field
+    when "image"
+      render 'layouts/admin/output/'+field_metadata.type_field, title: field_metadata.title, image: type.send(field_name)
+    # file field
+    when "file"
+      render 'layouts/admin/output/'+field_metadata.type_field, title: field_metadata.title, file: type.send(field_name)
+    # editor field
+    when "editor"
+      if(params[:locale])
+        field_name = "#{field_name}_#{params[:locale]}"
+      else
+        field_name = "#{field_name}_#{I18n.default_locale}"
+      end
+      render 'layouts/admin/output/'+field_metadata.type_field, title: field_metadata.title, value: type.send(field_name)
+    else
+      if(params[:locale])
+        field_name = "#{field_name}_#{params[:locale]}"
+      else
+        field_name = "#{field_name}_#{I18n.default_locale}"
+      end
+      render 'layouts/admin/output/'+field_metadata.type_field, title: field_metadata.title, value: type.send(field_name)
+    end
+  end
+
   # Return the call to the right input tag of a typefield
   def getInputTypefield(field_name, type_id, type_name, input_name)
     if(!type_id.blank?)
@@ -113,39 +146,6 @@ module Admin::AdminHelper
     end
   end
 
-  # Return the call to the right output tag of a typefield
-  def getOutputTypefield(field_name, type_id, type_name)
-    type = type_name.capitalize.constantize.find(type_id)
-    # get metadata for the type
-    type_metadata = Type.find_by(name: type_name)
-    # get metadata for the field
-    field_metadata = Typefield.find_by(name: field_name, type_id: type_metadata.id)
-
-    case field_metadata.type_field
-    # image field
-    when "image"
-      render 'layouts/admin/output/'+field_metadata.type_field, title: field_metadata.title, image: type.send(field_name)
-    # file field
-    when "file"
-      render 'layouts/admin/output/'+field_metadata.type_field, title: field_metadata.title, file: type.send(field_name)
-    # editor field
-    when "editor"
-      if(params[:locale])
-        field_name = "#{field_name}_#{params[:locale]}"
-      else
-        field_name = "#{field_name}_#{I18n.default_locale}"
-      end
-      render 'layouts/admin/output/'+field_metadata.type_field, title: field_metadata.title, value: type.send(field_name)
-    else
-      if(params[:locale])
-        field_name = "#{field_name}_#{params[:locale]}"
-      else
-        field_name = "#{field_name}_#{I18n.default_locale}"
-      end
-      render 'layouts/admin/output/'+field_metadata.type_field, title: field_metadata.title, value: type.send(field_name)
-    end
-  end
-
   # Return a language selection code
   def getLanguageSelector
     if(params[:locale])
@@ -172,6 +172,12 @@ module Admin::AdminHelper
     if(false and voice_url === "#{request.original_url}")
       return 'active'
     end
+  end
+
+  # Return the correct url of a custom type index page
+  def getTypeUrl(type_id)
+    # FUNZIONE DA SVILUPPARE
+    return '#'
   end
 
 end

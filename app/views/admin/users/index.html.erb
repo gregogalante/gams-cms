@@ -5,7 +5,7 @@
     <h3 class="panel-title"><%= yield(:title) %></h3>
   </div>
   <div class="panel-body">
-    <div class="col-md-8 col-lg-8">
+    <div class="col-md-6 col-lg-6">
       <div class="list-group">
       <%= search_form_for [:admin, @question] do |f| %>
         <div class="input-group">
@@ -17,7 +17,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-4 col-lg-4 text-right">
+    <div class="col-md-6 col-lg-6 text-right">
       <%= link_to $language['new'].capitalize, new_admin_user_path, class: "btn btn-primary" %>
       <br><br>
     </div>

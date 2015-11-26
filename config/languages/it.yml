@@ -20,6 +20,7 @@ delete: elimina
 show: visualizza
 url: url
 
+show_on_site: Visualizza nel sito
 error: Mi spiace, qualcosa è andato storto
 
 # SECURITY

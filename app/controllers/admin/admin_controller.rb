@@ -87,8 +87,17 @@ class Admin::AdminController < ActionController::Base
   end
 
   def generate_migration
+    # generate folders if they don't exist
+    directory_name = "#{Rails.root}/app/views/template"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
+    directory_name = "#{Rails.root}/app/views/template/pages"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
+    directory_name = "#{Rails.root}/db/gams-migrate"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
+    directory_name = "#{Rails.root}/db/gams-seeds"
+    Dir.mkdir(directory_name) unless File.exists?(directory_name)
     # delete old gams_seeds files
-    FileUtils.rm_rf(Dir.glob("#{Rails.root}/db/seeds/*"))
+    FileUtils.rm_rf(Dir.glob("#{Rails.root}/db/gams-seeds/*"))
     # generate new gams_seeds file
     File.open("#{Rails.root}/db/gams-seeds/gams_seeds.rb", "a") do |page|
       # generate pages seeds
@@ -107,7 +116,7 @@ class Admin::AdminController < ActionController::Base
       page.write("# DEFAULT TYPES \n")
       @types = Type.all
       @types.each do |object_type|
-        page.write('Type.create(name: "'+"#{object_type.name}"+'", title_s: "'+"#{object_type.title_s}"+'", title_p: "'+"#{object_type.title_p}"+'", url: "'+"#{object_type.url}"+'", visible: '+"#{object.visible}"+')'+"\n")
+        page.write('Type.create(name: "'+"#{object_type.name}"+'", title_s: "'+"#{object_type.title_s}"+'", title_p: "'+"#{object_type.title_p}"+'", url: "'+"#{object_type.url}"+'", visible: '+"#{object_type.visible}"+')'+"\n")
       end
       # generate typefields seeds
       page.write("# DEFAULT TYPEFIELDS \n")

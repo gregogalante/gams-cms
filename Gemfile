@@ -33,6 +33,8 @@ gem 'paperclip', '~> 4.3.0'
 gem 'web-console', '~> 2.0'
 # Multilanguage
 gem 'traco'
+# Ransack for search function
+gem 'ransack'
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.5.1'
 # Pagination for bootstrap
@@ -43,5 +45,3 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-select-rails'
 # Selectize for multiple selects
 gem "selectize-rails"
-# Ransack for search function
-gem 'ransack'

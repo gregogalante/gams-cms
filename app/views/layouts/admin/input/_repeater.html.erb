@@ -44,7 +44,7 @@ $('#select-<%= unique_key %>').selectize({
   searchField: ['title', 'id'],
   options: [
     <% @objects.each do |object| %>
-    {id: '<%= object.id %>', title: '<%= object.title %>'},
+    {id: "<%= object.id %>", title: "<%= raw object.title %>"},
     <% end %>
   ],
   items: [

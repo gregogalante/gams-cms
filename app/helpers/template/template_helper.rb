@@ -40,31 +40,4 @@ module Template::TemplateHelper
     end
   end
 
-  # type index object list
-  def get_typeobjects()
-    if(@type_objects)
-      return @type_objects
-    end
-  end
-
-  # type show object field
-  def get_typefield(field_name, type_field)
-    if(@type_object)
-      case type_field
-      # image field
-      when "image"
-        return @type_object.field_name
-      # file field
-      when "file"
-        return @type_object.field_name
-      else
-        if(params[:locale])
-          return raw @type_object.send("#{field_name}_#{params[:locale]}")
-        else
-          return raw @type_object.send("#{field_name}_#{I18n.default_locale}")
-        end
-      end
-    end
-  end
-
 end
