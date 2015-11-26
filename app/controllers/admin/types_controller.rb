@@ -58,7 +58,7 @@ class Admin::TypesController < Admin::AdminController
       else
         flash[:danger] = $language['type_not_updated']
         error_list = ""
-        @note.errors.full_messages.each do |error|
+        @type_object.errors.full_messages.each do |error|
           error_list += " #{error}, "
         end
         flash[:warning] = error_list[0...-2]

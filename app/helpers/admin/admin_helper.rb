@@ -168,7 +168,8 @@ module Admin::AdminHelper
 
   # Set menu voice active if user is in its Page
   def setActive(voice_url)
-    if(voice_url === "#{request.original_url}")
+    # FUNZIONE MOMENTANEAMENTE DISATTIVATA
+    if(false and voice_url === "#{request.original_url}")
       return 'active'
     end
   end

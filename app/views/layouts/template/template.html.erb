@@ -2,7 +2,7 @@
 <html lang="<%= getLang() %>">
 <head>
   <title>
-    <% if(current_page?('/')) %>
+    <% if(current_page?(root_path)) %>
       <%= $gams_config['app_name'] %>
     <% else %>
       <%= @head_title %> | <%= $gams_config['app_name'] %>
