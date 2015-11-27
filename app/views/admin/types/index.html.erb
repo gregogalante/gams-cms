@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="col-md-6 col-lg-6 text-right">
-      <%= link_to $language['show_on_site'], getTypeUrl(@type.id), class: "btn btn-primary" %>
+      <%= link_to $language['show'].capitalize, getTypeUrl(@type.url), class: "btn btn-primary" %>
       <%= link_to $language['new'].capitalize, admin_new_type_path(@type.name), class: "btn btn-primary" %>
       <br><br>
     </div>

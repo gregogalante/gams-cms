@@ -44,13 +44,13 @@ $('#select-<%= unique_key %>').selectize({
   searchField: ['title', 'id'],
   options: [
     <% @objects.each do |object| %>
-    {id: "<%= object.id %>", title: "<%= raw object.title %>"},
+    {id: "<%= object.id %>", title: "<%=j raw object.title %>"},
     <% end %>
   ],
   items: [
     <% if (@selected_objects) %>
       <% @selected_objects.each do |id| %>
-        <%= raw "'#{id}'," %>
+        <%= "#{id}," %>
       <% end %>
     <% end %>
   ],

@@ -175,9 +175,21 @@ module Admin::AdminHelper
   end
 
   # Return the correct url of a custom type index page
-  def getTypeUrl(type_id)
-    # FUNZIONE DA SVILUPPARE
-    return '#'
+  def getTypeUrl(type_url)
+    if(params[:locale])
+      return "#{root_path}/#{type_url}"
+    else
+      return "#{root_path}#{type_url}"
+    end
+  end
+
+  # Return the correct url of a custom type object show page
+  def getTypeobjectUrl(typeobject_url, type_url)
+    if(params[:locale])
+      return "#{root_path}/#{type_url}/#{typeobject_url}"
+    else
+      return "#{root_path}#{type_url}/#{typeobject_url}"
+    end
   end
 
 end

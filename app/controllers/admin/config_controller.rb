@@ -192,7 +192,6 @@ class Admin::ConfigController < Admin::AdminController
         page.write("class #{@type.name.capitalize} < ActiveRecord::Base \n")
         page.write("self.table_name = '#{@type.name.downcase}' \n")
         page.write("before_save { \n")
-        page.write("self.title = self.title.gsub('"+'"'+"', '“') \n")
         page.write("self.url = self.url.parameterize('-') \n")
         page.write("} \n")
         page.write("validates :url, uniqueness: true, presence: true, length: {maximum: 50} \n")
