@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # ADMIN SECTION ###########################
   get 'admin', :to => 'admin/admin#login'
   namespace :admin do
+
     get 'home', :to => 'admin#home', as: 'home'
     # authentication routes
     post 'access', :to => 'admin#access'
@@ -39,10 +40,11 @@ Rails.application.routes.draw do
     resources :notes
     # pages
     resources :pages
+    #uploads
+    resources :uploads
     # fields
     resources :fields
     delete 'fields/remove-att/:id', :to => 'fields#remove_attachment', as: 'delete_field_attachment'
-
     # types
     get '/type/:typename', :to => 'types#index', as: 'types'
     get '/type/:typename/show/:objectid', :to => 'types#show', as: 'show_type'
@@ -57,17 +59,17 @@ Rails.application.routes.draw do
 
   # TEMPLATE SECTION ########################
 
-    if($gams_config['has_languages'] === 'true')
-      scope "/:locale" do
-        root 'template/template#homepage'
-        match '/:url', :to => 'template/template#routes', via: :get
-        match '/:url/:id', :to => 'template/template#routes', via: :get
-      end
-    else
-        root 'template/template#homepage'
-        match '/:url', :to => 'template/template#routes', via: :get
-        match '/:url/:id', :to => 'template/template#routes', via: :get
+  if($gams_config['has_languages'] === 'true')
+    scope "/:locale" do
+      root 'template/template#homepage'
+      match '/:url', :to => 'template/template#routes', via: :get
+      match '/:url/:id', :to => 'template/template#routes', via: :get
     end
+  else
+      root 'template/template#homepage'
+      match '/:url', :to => 'template/template#routes', via: :get
+      match '/:url/:id', :to => 'template/template#routes', via: :get
+  end
 
   ###########################################
 

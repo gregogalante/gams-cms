@@ -66,7 +66,7 @@ namespace :reset do
 
   task :schema => :environment do
     # copy gams-schema to official schema
-    IO.copy_stream("#{Rails.root}/db/gams-schema.rb", "#{Rails.root}/db/schema.rb")
+    IO.copy_stream("#{Rails.root}/db/default-schema.rb", "#{Rails.root}/db/schema.rb")
   end
 
   task :pages => :environment do
@@ -80,7 +80,7 @@ namespace :reset do
   end
 
   task :types => :environment do
-    DEFAULT_MODELS = ['user.rb', 'note.rb', 'page.rb', 'field.rb', 'type.rb', 'typefield.rb']
+    DEFAULT_MODELS = ['user.rb', 'upload.rb', 'note.rb', 'page.rb', 'field.rb', 'type.rb', 'typefield.rb']
     # delete all models of types
     files = Dir.glob("#{Rails.root}/app/models/*")
     files.each do |file|

@@ -6,13 +6,21 @@
   </div>
   <div class="panel-body">
     <div class="col-md-12 col-lg-12">
-      <div class="list-group">
-        <% @pages.each do |page| %>
-        <a href="<%= admin_page_path(page.id) %>" class="list-group-item">
-          <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> <b><%= page.title %></b>
-        </a>
-        <% end %>
-      </div>
+      <% if(@pages.length != 0) %>
+        <div class="list-group">
+            <% @pages.each do |page| %>
+            <a href="<%= admin_page_path(page.id) %>" class="list-group-item">
+              <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> <b><%= page.title %></b>
+            </a>
+            <% end %>
+        </div>
+      <% else %>
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only"></span>
+          <%= $language['page_not_found'].capitalize %>
+        </div>
+      <% end %>
     </div>
     <div class="col-md-12 col-lg-12" style="text-align: center">
       <%= will_paginate @pages, :renderer => BootstrapPagination::Rails %>

@@ -12,7 +12,8 @@
  *
  *= require_tree .
  *= require selectize
-*= require selectize.bootstrap3
+ *= require selectize.bootstrap3
+ *= require dropzone/dropzone
  *= require_self
  */
 

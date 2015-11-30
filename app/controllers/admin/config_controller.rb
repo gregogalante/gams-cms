@@ -78,7 +78,7 @@ class Admin::ConfigController < Admin::AdminController
           table = type.name.capitalize.constantize
           # translate title
           if(!ActiveRecord::Base.connection.column_exists?(type.name, "title_#{language}"))
-            ActiveRecord::Migration.add_column type.name, "title_#{language}", :string
+            ActiveRecord::Migration.add_column type.name, "title_#{language}", :string, :default => ' '
           end
           # translate fields
           typefields = Typefield.where(type_id: type.id)

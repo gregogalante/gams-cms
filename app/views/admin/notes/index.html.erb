@@ -9,12 +9,22 @@
       <%= link_to $language['new'].capitalize, new_admin_note_path, class: "btn btn-primary" %>
       <br><br>
     </div>
-    <% @notes.each do |note| %>
-    <div class="col-md-6 col-lg-6">
-      <div class="panel panel-default panel-<%= note.style %>">
-        <a class="panel-heading" href="<%= admin_note_path(note) %>" style="display: block"><%= note.title %></a>
+    <% if (@notes.length != 0) %>
+      <% @notes.each do |note| %>
+      <div class="col-md-6 col-lg-6">
+        <div class="panel panel-default panel-<%= note.style %>">
+          <a class="panel-heading" href="<%= admin_note_path(note) %>" style="display: block"><%= note.title %></a>
+        </div>
       </div>
-    </div>
+      <% end %>
+    <% else %>
+      <div class="col-md-12 col-lg-12">
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only"></span>
+          <%= $language['note_not_found'].capitalize %>
+        </div>
+      </div>
     <% end %>
     <div class="col-md-12 col-lg-12" style="text-align: center">
       <%= will_paginate @notes, :renderer => BootstrapPagination::Rails %>

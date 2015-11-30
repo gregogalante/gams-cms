@@ -40,6 +40,7 @@ header_dashboard: Dashboard
 menu_home: Home
 menu_users: Utenti
 menu_pages: Pagine
+menu_uploads: Media
 menu_notes: Note
 menu_settings: Impostazioni
 
@@ -91,6 +92,9 @@ type_deleted: L'oggetto è stato eliminato
 type_not_found: Nessun oggetto trovato
 type_delete_confirmation: Vuoi veramente eliminare l'oggetto?
 
-# ATTACHMENTS
+# UPLOADS
+upload_singular: caricamento
+upload_plural: caricamenti
+
 attachment_deleted: L'allegato è stato eliminato
 attachment_not_found: Il campo non ha alcun allegato

@@ -1,0 +1,39 @@
+<% provide(:title, $language['upload_plural'].capitalize) %>
+
+<div class="home panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-8 col-lg-8">
+      <%= form_for([:admin, @upload], html: { multipart: true, class: "dropzone"}) do |f|  %>
+        <div class="fallback">
+          <%= f.file_field :file %><br>
+          <%= f.submit "Upload file" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="uploads-list">
+      <%= render "layouts/admin/ajax/uploadslist" %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    // disable auto discover
+    Dropzone.autoDiscover = false;
+
+
+    var dropzone = new Dropzone (".dropzone", {
+      maxFilesize: 5, // Set the maximum file size to 256 MB
+      paramName: "upload[file]", // Rails expects the file upload to be something like model[field_name]
+      addRemoveLinks: false // Don't show remove links on dropzone itself.
+    });
+
+    dropzone.on("success", function(file) {
+      $.getScript("/images")
+    })
+  });
+</script>

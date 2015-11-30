@@ -45,3 +45,5 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-select-rails'
 # Selectize for multiple selects
 gem "selectize-rails"
+# Dropzone for media uploads
+gem 'dropzonejs-rails'

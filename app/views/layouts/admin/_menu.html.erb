@@ -31,6 +31,11 @@
     <% end %>
     <% # End of the list %>
 
+    <a href="<%= admin_uploads_path %>" class="list-group-item <%= setActive(admin_uploads_path) %>">
+      <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+      <%= $language['menu_uploads'] %>
+    </a>
+
     <a href="<%= admin_notes_path %>" class="list-group-item <%= setActive(admin_notes_path) %>">
       <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
       <%= $language['menu_notes'] %>

@@ -40,6 +40,7 @@ header_dashboard: Dashboard
 menu_home: Home
 menu_users: Users
 menu_pages: Pages
+menu_uploads: Uploads
 menu_notes: Notes
 menu_settings: Settings
 
@@ -91,6 +92,9 @@ type_deleted: Object is deleted
 type_not_found: No objects found
 type_delete_confirmation: Do you really want to delete the object?
 
-# ATTACHMENTS
+# UPLOADS
+upload_singular: upload
+upload_plural: uploads
+
 attachment_deleted: Attachment is deleted
 attachment_not_found: This field has not attachment

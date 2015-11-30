@@ -20,4 +20,5 @@
 //= require bootstrap-wysihtml5/minimum
 //= require bootstrap-select
 //= require selectize
+//= require dropzone
 //= require_tree .

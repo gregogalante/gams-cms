@@ -174,6 +174,13 @@ module Admin::AdminHelper
     end
   end
 
+  # Call the right partial with ajax (use it with remote: true)
+  def ajaxLoad(container, partial)
+    respond_to do |format|
+      # CARICO LO SCRIPT scripts/ajax.js.erb PASSANDOGLI LE DUE VARIABILI RICEVUTE COME PARAMETRO
+    end
+  end
+
   # Return the correct url of a custom type index page
   def getTypeUrl(type_url)
     if(params[:locale])
