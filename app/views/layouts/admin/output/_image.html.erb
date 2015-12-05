@@ -3,10 +3,21 @@
     <h3 class="panel-title"><%= title %></h3>
   </div>
   <div class="panel-body">
-    <% if(!image.blank?) %>
-    <a href="#" class="thumbnail">
-      <img src="<%= image.url(:medium) %>" alt="">
-    </a>
+    <% if(image) %>
+      <div class="img-thumbnail media-content" data-original="<%= image.image.url(:medium) %>)"></div>
+    <% else %>
+      <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only"></span>
+        <%= $language['image_not_found'].capitalize %>
+      </div>
     <% end %>
   </div>
 </div>
+
+<script>
+// Lazyload for images
+$(".media-content").lazyload({
+  effect : "fadeIn"
+});
+</script>

@@ -1,0 +1,34 @@
+<% provide(:title, "#{$language['edit'].capitalize} #{$language['image_singular'].capitalize}") %>
+
+<div class="home panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12 col-lg-12 text-right">
+      <%= getLanguageSelector() %>
+    </div>
+    <%= form_for [:admin, @image] do |f| %>
+      <div class="col-md-8 col-lg-8">
+        <h4 class="field-title"><%= $language['title'].capitalize %></h4>
+        <div class="input-group">
+          <label class="input-group-addon"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></label>
+          <input class="form-control" type="text"  name="image[title]" value="<%= @image.send(@title_field_name) %>">
+        </div>
+        <br>
+        <h4 class="field-title"><%= $language['description'].capitalize %></h4>
+        <div class="input-group">
+          <label class="input-group-addon"><span class="glyphicon glyphicon-font" aria-hidden="true"></label>
+          <textarea class="form-control" type="text"  name="image[description]" style="height: 100px"><%= raw @image.send(@description_field_name) %></textarea>
+        </div>
+        <br>
+      </div>
+      <div class="col-md-4 col-lg-4">
+        <div class="img-thumbnail media-content" style="background-image: url(<%= @image.image.url(:medium) %>)"></div>
+      </div>
+      <div class="col-md-12 col-lg-12">
+        <input class="btn btn-primary" type="submit" value="<%= $language['save'].capitalize %>">
+      </div>
+    <% end %>
+  </div>
+</div>

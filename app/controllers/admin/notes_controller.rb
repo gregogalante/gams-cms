@@ -6,6 +6,10 @@ class Admin::NotesController < Admin::AdminController
     @notes = Note.paginate(:page => params[:page], :per_page => 12).order('created_at DESC')
   end
 
+  def show
+    @note = Note.find(params[:id])
+  end
+
   def new
     @note = Note.new
   end
@@ -24,10 +28,6 @@ class Admin::NotesController < Admin::AdminController
       flash[:warning] = error_list[0...-2]
       redirect_to new_admin_note_path
     end
-  end
-
-  def show
-    @note = Note.find(params[:id])
   end
 
   def edit

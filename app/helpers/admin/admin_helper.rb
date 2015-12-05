@@ -20,10 +20,10 @@ module Admin::AdminHelper
     case field.type_field
     # image field
     when "image"
-      render 'layouts/admin/output/'+field.type_field, title: field.title, image: field.image
-    # file field
-    when "file"
-      render 'layouts/admin/output/'+field.type_field, title: field.title, file: field.file
+      if(field_value and !field_value.empty?)
+        image = Image.find(field.value)
+      end
+      render 'layouts/admin/output/'+field.type_field, title: field.title, image: image
     # other field
     else
       render 'layouts/admin/output/'+field.type_field, title: field.title, value: field_value
@@ -37,12 +37,15 @@ module Admin::AdminHelper
     case field.type_field
     # image field
     when "image"
-      delete_url = admin_delete_field_attachment_path(field.id)
-      render 'layouts/admin/input/'+field.type_field, title: field.title, image: field.image, name: input_name, delete_url: delete_url
-    # file field
-    when "file"
-      delete_url = admin_delete_field_attachment_path(field.id)
-      render 'layouts/admin/input/'+field.type_field, title: field.title, file: field.file, name: input_name, delete_url: delete_url
+      if(params[:locale])
+        field_value = field.send("value_#{params[:locale]}")
+      else
+        field_value = field.value
+      end
+      if(field_value and !field_value.empty?)
+        image = Image.find(field_value)
+      end
+      render 'layouts/admin/input/'+field.type_field, title: field.title, value: field_value, name: input_name, unique_key: field.name, image: image
     # editor field
     when "editor"
       if(params[:locale])
@@ -76,10 +79,15 @@ module Admin::AdminHelper
     case field_metadata.type_field
     # image field
     when "image"
-      render 'layouts/admin/output/'+field_metadata.type_field, title: field_metadata.title, image: type.send(field_name)
-    # file field
-    when "file"
-      render 'layouts/admin/output/'+field_metadata.type_field, title: field_metadata.title, file: type.send(field_name)
+      if(params[:locale])
+        field_name = "#{field_name}_#{params[:locale]}"
+      else
+        field_name = "#{field_name}_#{I18n.default_locale}"
+      end
+      if(type.send(field_name) and !type.send(field_name).empty?)
+        image = Image.find(type.send(field_name))
+      end
+      render 'layouts/admin/output/'+field_metadata.type_field, title: field_metadata.title, image: image
     # editor field
     when "editor"
       if(params[:locale])
@@ -113,20 +121,15 @@ module Admin::AdminHelper
     case field_metadata.type_field
     # image field
     when "image"
-      if(!type_id.blank?)
-        delete_url = admin_delete_typefield_attachment_path(type_metadata.name,type_id,field_name)
+      if(params[:locale])
+        field_name = "#{field_name}_#{params[:locale]}"
       else
-        delete_url = nil
+        field_name = "#{field_name}_#{I18n.default_locale}"
       end
-      render 'layouts/admin/input/'+field_metadata.type_field, title: field_metadata.title, image: type.send(field_name), name: input_name, delete_url: delete_url
-    # file field
-    when "file"
-      if(!type_id.blank?)
-        delete_url = admin_delete_typefield_attachment_path(type_metadata.name,type_id,field_name)
-      else
-        delete_url = nil
+      if(type.send(field_name) and !type.send(field_name).empty?)
+        image = Image.find(type.send(field_name))
       end
-      render 'layouts/admin/input/'+field_metadata.type_field, title: field_metadata.title, file: type.send(field_name), name: input_name, delete_url: delete_url
+      render 'layouts/admin/input/'+field_metadata.type_field, title: field_metadata.title, value: type.send(field_name), name: input_name, unique_key: field_metadata.name, image: image
     # editor field
     when "editor"
       if(params[:locale])
@@ -171,13 +174,6 @@ module Admin::AdminHelper
     # FUNZIONE MOMENTANEAMENTE DISATTIVATA
     if(false and voice_url === "#{request.original_url}")
       return 'active'
-    end
-  end
-
-  # Call the right partial with ajax (use it with remote: true)
-  def ajaxLoad(container, partial)
-    respond_to do |format|
-      # CARICO LO SCRIPT scripts/ajax.js.erb PASSANDOGLI LE DUE VARIABILI RICEVUTE COME PARAMETRO
     end
   end
 

@@ -15,10 +15,7 @@ module Template::TemplateHelper
       case field.type_field
       # image field
       when "image"
-        return field.image
-      # file field
-      when "file"
-        return field.file
+        return Image.find(field.value)
       # repeater field
       when "repeater"
         objects = []

@@ -1,0 +1,34 @@
+<% provide(:title, "#{$language['new'].capitalize} #{$language['page_singular']}") %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <%= form_tag(admin_pages_path, method: "post", multipart: true, action: :create) do %>
+
+    <div class="col-md-6 col-lg-6">
+      <h4 class="field-title">Title</h4>
+      <div class="input-group">
+        <label class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></label>
+        <input class="form-control" type="text"  name="title" value="">
+      </div>
+      <br>
+    </div>
+
+    <div class="col-md-6 col-lg-6">
+      <h4 class="field-title">Url</h4>
+      <div class="input-group">
+        <label class="input-group-addon"><span class="glyphicon glyphicon-link" aria-hidden="true"></label>
+        <input class="form-control" type="text"  name="url" value="">
+      </div>
+      <br>
+    </div>
+
+    <div class="col-md-12 col-lg-12">
+      <input class="btn btn-primary" type="submit" value="Save">
+    </div>
+
+    <% end %>
+  </div>
+</div>

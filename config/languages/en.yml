@@ -9,15 +9,18 @@ collaborator: collaborator
 password: password
 password_confirmation: repeat password
 title: title
+description: description
 style: style
 content: content
 
 save: save
 search: search
 new: new
+select: select
 edit: edit
 delete: delete
 show: show
+back: back
 url: url
 
 error: Sorry, something goes wrong
@@ -40,9 +43,9 @@ header_dashboard: Dashboard
 menu_home: Home
 menu_users: Users
 menu_pages: Pages
-menu_uploads: Uploads
+menu_images: Images
 menu_notes: Notes
-menu_settings: Settings
+menu_configuration: Configurations
 
 # USERS
 user_singular: user
@@ -92,9 +95,23 @@ type_deleted: Object is deleted
 type_not_found: No objects found
 type_delete_confirmation: Do you really want to delete the object?
 
-# UPLOADS
-upload_singular: upload
-upload_plural: uploads
+# IMAGES
+image_singular: image
+image_plural: images
+
+image_saved: The new image is saved
+image_not_saved: Sorry, the new image is not saved
+image_updated: Image is updated
+image_not_updated: Object is not updated
+image_deleted: Image is deleted
+image_not_found: No images found
+image_delete_confirmation: Do you really want to delete the image?
+
+image_upload: Upload here your images
+
+
+
+
 
 attachment_deleted: Attachment is deleted
 attachment_not_found: This field has not attachment

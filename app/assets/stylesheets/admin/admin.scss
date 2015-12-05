@@ -17,20 +17,74 @@
  *= require_self
  */
 
-/* new bootstrap variables */
-$body-bg: #ecf0f1;
-$brand-primary: #3a5168;
+/* BOOTSTRAP CHANGES */
+
+// Default colors
+$body-bg: #F0F0EF;
+$brand-primary: #1F4E5F;
+
+$brand-success: #64A97B;
+$brand-info: #266D98;
+$brand-warning: #EFAC2A;
+$brand-danger: #EA5455;
+
+// Default border-radius
+$border-radius-base: 0px;
+$border-radius-large: 0px;
+$border-radius-small: 0px;
+
+// Navbar style
+$navbar-default-color: #555555;
+$navbar-default-bg: #F4F7F7;
+
+$navbar-default-link-color: #555555;
+$navbar-default-link-hover-color: #555555;
+$navbar-default-link-active-color: #555555;
+$navbar-default-link-disabled-color: #555555;
+
+// Alerts
+$state-success-text: #ffffff;
+$state-success-bg: $brand-success;
+
+$state-info-text: #ffffff;
+$state-info-bg: $brand-info;
+
+$state-warning-text: #ffffff;
+$state-warning-bg: $brand-warning;
+
+$state-danger-text: #ffffff;
+$state-danger-bg: $brand-danger;
+
+// Panels
+$panel-inner-border: #ddd;
+$panel-footer-bg: #f5f5f5;
+
+$panel-default-text: #555;
+$panel-default-border: #ddd;
+$panel-default-heading-bg: #F4F7F7;
+
+// Badge
+$badge-bg: #F0F0EF;
+$badge-color: #555555;
+$badge-link-hover-color: #555555;
+
 
 @import 'bootstrap-select';
 @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+img {
+  max-width: 100%;
+}
+
+// Page panel title
 .panel-title {
   text-transform: uppercase;
   font-weight: bold;
 }
 
+// General field title
 .field-title {
   border-bottom: solid 1px $brand-primary;
   margin-top: 15px;
@@ -38,13 +92,19 @@ $brand-primary: #3a5168;
   padding-bottom: 5px;
 }
 
+// General image grid content
 .media-content {
   width: 100%;
   height: 200px;
   background-size: cover;
   background-position: center;
+
+  &.selected {
+    border: solid 10px $brand-primary;
+  }
 }
 
+// Navigation menu
 #partial-menu {
   .panel-heading {
     cursor: pointer;
@@ -54,6 +114,7 @@ $brand-primary: #3a5168;
   }
 }
 
+// Hide console in congiguration
 #console {
   display: none;
 }

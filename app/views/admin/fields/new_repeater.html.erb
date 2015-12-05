@@ -1,0 +1,66 @@
+<% provide(:title, "Configuration") %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <%= form_tag(admin_create_field_repeater_path, method: "post", multipart: true, action: :create_repeater) do %>
+
+    <input type="hidden" name="type" value="repeater">
+
+    <div class="col-md-6 col-lg-6">
+      <h4 class="field-title">Name*</h4>
+      <div class="input-group">
+        <label class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></label>
+        <input class="form-control" type="text"  name="name">
+      </div>
+      <br>
+    </div>
+
+    <div class="col-md-6 col-lg-6">
+      <h4 class="field-title">Title*</h4>
+      <div class="input-group">
+        <label class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></label>
+        <input class="form-control" type="text"  name="title">
+      </div>
+      <br>
+    </div>
+
+    <div class="col-md-4 col-lg-4">
+      <h4 class="field-title">Repeater of</h4>
+      <select class="selectpicker" name="repeating" data-live-search="true">
+        <% @types.each do |type| %>
+          <option value="<%= type.name %>"><%= type.title_p.capitalize %></option>
+        <% end %>
+      </select>
+      <br>
+    </div>
+
+
+    <div class="col-md-4 col-lg-4">
+      <h4 class="field-title">Field page</h4>
+      <select class="selectpicker" name="page" data-live-search="true">
+        <% @pages.each do |page| %>
+          <option value="<%= page.id %>"><%= page.title %></option>
+        <% end %>
+      </select>
+      <br>
+    </div>
+
+    <div class="col-md-4 col-lg-4">
+      <h4 class="field-title">Position</h4>
+      <div class="input-group">
+        <label class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></label>
+        <input class="form-control" type="number"  name="position">
+      </div>
+      <br>
+    </div>
+
+    <div class="col-md-12 col-lg-12">
+      <input class="btn btn-primary" type="submit" value="Save">
+    </div>
+
+    <% end %>
+  </div>
+</div>

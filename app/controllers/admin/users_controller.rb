@@ -56,19 +56,19 @@ class Admin::UsersController < Admin::AdminController
     end
   end
 
-  private def control_password_to_update
-    if(params[:user][:password].blank?)
-      params[:user][:password]
-      params[:user][:password_confirmation]
-    end
-  end
-
   def destroy
     @user = User.find(params[:id])
     if(user_has_permissions?)
       @user.destroy
       flash[:success] = $language['user_deleted']
       redirect_to admin_users_path
+    end
+  end
+
+  private def control_password_to_update
+    if(params[:user][:password].blank?)
+      params[:user][:password]
+      params[:user][:password_confirmation]
     end
   end
 

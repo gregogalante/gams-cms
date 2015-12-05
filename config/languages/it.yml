@@ -9,15 +9,18 @@ collaborator: collaboratore
 password: password
 password_confirmation: ripeti password
 title: titolo
+description: descrizione
 style: stile
 content: contenuto
 
 save: salva
 search: cerca
 new: nuovo
+select: seleziona
 edit: modifica
 delete: elimina
 show: visualizza
+back: indietro
 url: url
 
 error: Mi spiace, qualcosa è andato storto
@@ -40,9 +43,9 @@ header_dashboard: Dashboard
 menu_home: Home
 menu_users: Utenti
 menu_pages: Pagine
-menu_uploads: Media
+menu_images: Immagini
 menu_notes: Note
-menu_settings: Impostazioni
+menu_configuration: Configurazione
 
 # USERS
 user_singular: utente
@@ -92,9 +95,23 @@ type_deleted: L'oggetto è stato eliminato
 type_not_found: Nessun oggetto trovato
 type_delete_confirmation: Vuoi veramente eliminare l'oggetto?
 
-# UPLOADS
-upload_singular: caricamento
-upload_plural: caricamenti
+# IMAGES
+image_singular: immagine
+image_plural: immagini
+
+image_saved: La nuova immagine è stata creata
+image_not_saved: La nuova immagine non è stata creata
+image_updated: L' immagine è stata aggiornata
+image_not_updated: La immagine non è stata aggiornata
+image_deleted: L' immagine è stata eliminata
+image_not_found: Nessuna immagine trovata
+image_delete_confirmation: Vuoi veramente eliminare l' immagine?
+
+image_upload: Carica qui le tue immagini
+
+
+
+
 
 attachment_deleted: L'allegato è stato eliminato
 attachment_not_found: Il campo non ha alcun allegato

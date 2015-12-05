@@ -1,0 +1,39 @@
+<% provide(:title, "#{$language['show'].capitalize} #{$language['image_singular'].capitalize}") %>
+
+<div class="home panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12 col-lg-12 text-right">
+      <%= getLanguageSelector() %>
+    </div>
+    <div class="col-md-8 col-lg-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= $language['title'].capitalize %></h3>
+        </div>
+        <div class="panel-body">
+          <%= raw @image.send(@title_field_name) %>
+        </div>
+      </div>
+      <br>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= $language['description'].capitalize %></h3>
+        </div>
+        <div class="panel-body">
+          <%= raw @image.send(@description_field_name) %>
+        </div>
+      </div>
+      <br>
+    </div>
+    <div class="col-md-4 col-lg-4">
+      <div class="img-thumbnail media-content" style="background-image: url(<%= @image.image.url(:medium) %>)"></div>
+    </div>
+    <div class="col-md-12 col-lg-12">
+      <%= link_to $language['edit'].capitalize, edit_admin_image_path(@image), class: "btn btn-info" %>
+      <%= link_to $language['delete'].capitalize, admin_image_path(@image), :method => :delete, data: {confirm: $language['image_delete_confirmation']}, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

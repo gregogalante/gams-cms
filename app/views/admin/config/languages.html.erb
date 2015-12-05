@@ -1,0 +1,68 @@
+<% provide(:title, "Configuration") %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <%= form_tag(admin_config_languages_initialize_path) do %>
+    <div class="col-md-7 col-lg-7">
+      <h4 class="field-title">How many languages do you have?</h4>
+      <select id="language-chose" class="selectpicker" name="language_chose" data-live-search="true">
+        <option value="false" <%= "selected" if(!@has_languages) %>>One language</option>
+        <option value="true" <%= "selected" if(@has_languages) %>>Many languages</option>
+      </select>
+      <br><br>
+    </div>
+    <div class="col-md-5 col-lg-5">
+      <h4 class="field-title">Select sites languages </h4>
+      <select id="select-languages" class="selectized" placeholder="Select site languages" multiple="multiple" tabindex="-1" style="display: none;"></select>
+      <input id="select-languages-hidden" value="<% if (@languages_list) %><% @languages_list.each do |code| %><%= raw "#{code}," %><% end %><% end %>" type="hidden" name="languages_list">
+      <br>
+    </div>
+    <div class="col-md-12 col-lg-12">
+      <input class="btn btn-primary" type="submit" value="Save">
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<script>
+
+// Selectize for languages
+var updateInput = function() {
+  return function() {
+    var items = $('.selectize-input .item');
+    var lista = ""
+      items.each(function(index) {
+       lista += $(this).attr('data-value') + ","
+      });
+    $('#select-languages-hidden').val(lista);
+  };
+};
+
+$('#select-languages').selectize({
+  plugins: ['remove_button'],
+  persist: false,
+  maxItems: null,
+  valueField: 'code',
+  labelField: 'name',
+  searchField: ['name', 'code'],
+  options: [
+      <% @languages_name.length.times do |n| %>
+      {code: '<%= @languages_code[n] %>', name: '<%= @languages_name[n] %>'},
+      <% end %>
+  ],
+  items: [
+      <% if (@languages_list) %>
+        <% @languages_list.each do |code| %>
+          <%= raw "'#{code}'," %>
+        <% end %>
+      <% end %>
+  ],
+  onChange: updateInput(),
+});
+
+</script>

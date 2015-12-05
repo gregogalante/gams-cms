@@ -1,18 +1,86 @@
 <h4 class="field-title"><%= title %></h4>
-<% if(!image.blank?) %>
-  <a href="#" class="thumbnail">
-    <img src="<%= image.url(:medium) %>" alt="">
-  </a>
-<% end %>
-<% if(image.blank?) %>
-<div class="input-group">
-  <label class="input-group-addon"><span class="glyphicon glyphicon-picture" aria-hidden="true"></label>
-  <input class="form-control" type="file" name="<%= name %>" value="">
+<!-- Image preview -->
+<div id="image-<%= unique_key %>">
+  <% if(value and !value.empty?) %>
+    <div id="<%= value %>" class="img-thumbnail media-content media-content-<%= unique_key %>" data-original="<%= image.image.url(:medium) %>)"></div>
+  <% else %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+      <%= $language['image_not_found'].capitalize %>
+    </div>
+  <% end %>
 </div>
-<% end %>
-<% if(!image.blank?) # remove image from the fields table %>
-  <div class="text-right">
-    <%= link_to "Remove", delete_url, :method => :delete, data: {confirm: "Do you really want to remove the image?"}, style: "color: red" %>
+
+<!-- Hidden-form -->
+<input id="image-form-<%= unique_key %>" type="hidden" value="<%= value %>" name="<%= name %>">
+
+<!-- Modal  button -->
+<div class="text-right">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-<%= unique_key %>">
+  <%= $language['select'].capitalize %>
+  </button>
+  <button type="button" class="btn btn-danger" id="image-button-remove-<%= unique_key %>">
+  <%= $language['delete'].capitalize %>
+  </button>
+</div>
+<br><br>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-<%= unique_key %>" tabindex="-1" role="dialog" aria-labelledby="modal-title-<%= unique_key %>">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modal-title-<%= unique_key %>"><%= $language['select'].capitalize %> <%= $language['image_singular'].capitalize %></h4>
+      </div>
+      <div class="modal-body row">
+        <% @images.each do |image| %>
+          <div class="col-md-4 col-lg-4">
+            <div id="<%= image.id %>" class="img-thumbnail media-content media-content-<%= unique_key %>" data-original="<%= image.image.url(:medium) %>)"></div>
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button id="image-button-<%= unique_key %>" type="button" class="btn btn-primary"><%= $language['save'].capitalize %></button>
+      </div>
+    </div>
   </div>
-<% end %>
-<br>
+</div>
+
+<!-- Select script -->
+<script>
+// Lazyload for images
+$(".media-content").lazyload({
+  effect : "fadeIn"
+});
+
+// Image clicked
+$('#modal-<%=j raw unique_key %> .media-content-<%=j raw unique_key %>').click(function(e) {
+  var images = $('.media-content-<%=j raw unique_key %>');
+  var current_img = $(e.target);
+  var form = $('#image-form-<%= unique_key %>');
+  var img_container = $('#image-<%= unique_key %>');
+
+  images.removeClass('selected');
+  current_img.addClass('selected');
+  form.val(current_img.attr('id'));
+  img_container.html(current_img.clone().removeClass('selected'));
+});
+
+// Remove button clicked
+$('#image-button-remove-<%=j raw unique_key %>').click(function(e) {
+  var images = $('.media-content-<%=j raw unique_key %>');
+  var form = $('#image-form-<%= unique_key %>');
+  var img_container = $('#image-<%= unique_key %>');
+
+  images.removeClass('selected');
+  form.val('');
+  img_container.html('');
+});
+
+// Selection control
+$('#image-button-<%=j raw unique_key %>').click(function() {
+  $('#modal-<%=j raw unique_key %>').modal('hide');
+})
+</script>

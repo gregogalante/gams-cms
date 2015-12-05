@@ -1,6 +1,7 @@
 class Admin::FieldsController < Admin::AdminController
   before_action :control_user
   before_action :control_editor, only: [:remove_attachment]
+  before_action :control_admin, only: [:new, :create, :new_repeater, :create_repeater]
 
   def index
     redirect_to admin_path
@@ -8,6 +9,27 @@ class Admin::FieldsController < Admin::AdminController
 
   def show
     redirect_to admin_path
+  end
+
+  def new
+    @pages = Page.all
+  end
+
+  def create
+    @field = Field.new(type_field: params[:type], name: params[:name].downcase, title: params[:title], page_id: params[:page], position: params[:position])
+    if (@field.save)
+      # output
+      flash[:success] = "The new field #{@field.title} is saved"
+    else
+      # output
+      flash[:danger] = "Sorry, the new field is not saved"
+      error_list = ""
+      @field.errors.full_messages.each do |error|
+        error_list += " #{error}, "
+      end
+      flash[:warning] = error_list[0...-2]
+    end
+    redirect_to admin_configuration_path
   end
 
   def edit
@@ -18,43 +40,30 @@ class Admin::FieldsController < Admin::AdminController
     redirect_to admin_path
   end
 
-  def new
-    redirect_to admin_path
-  end
-
-  def create
-    redirect_to admin_path
-  end
-
   def destroy
     redirect_to admin_path
   end
 
-  def remove_attachment
-    @field = Field.find(params[:id])
-    if (@field.type_field === "image")
-      if (@field.image)
-        @field.image = nil
-        @field.save
-        flash[:success] = $language['attachment_deleted']
-        redirect_to admin_page_path(@field.page_id)
-      else
-        flash[:danger] = $language['attachment_not_found']
-        redirect_to admin_page_path(@field.page_id)
-      end
-    elsif (@field.type_field === "file")
-      if (@field.file)
-        @field.file = nil
-        @field.save
-        flash[:success] = $language['attachment_deleted']
-      else
-        flash[:danger] = $language['attachment_not_found']
-      end
-      redirect_to admin_page_path(@field.page_id)
+  def new_repeater
+    @pages = Page.all
+    @types = Type.all
+  end
+
+  def create_repeater
+    @field = Field.new(type_field: params[:type], name: params[:name].downcase, title: params[:title], page_id: params[:page], repeating: params[:repeating], position: params[:position])
+    if (@field.save)
+      # output
+      flash[:success] = "The new repeater #{@field.title} is saved"
     else
-      flash[:danger] = $language['attachment_not_found']
-      redirect_to admin_pages_path
+      # output
+      flash[:danger] = "Sorry, the new repeater is not saved"
+      error_list = ""
+      @field.errors.full_messages.each do |error|
+        error_list += " #{error}, "
+      end
+      flash[:warning] = error_list[0...-2]
     end
+    redirect_to admin_configuration_path
   end
 
 end

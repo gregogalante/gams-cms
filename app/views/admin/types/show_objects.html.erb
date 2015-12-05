@@ -1,0 +1,32 @@
+<% provide(:title, "#{$language['show'].capitalize} #{@type.title_s}") %>
+
+<div class="home panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= yield(:title) %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12 col-lg-12 text-right">
+      <%= getLanguageSelector() %>
+    </div>
+    <div class="col-md-12 col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= $language['title'].capitalize %></h3>
+        </div>
+        <div class="panel-body">
+          <%= @type_object.send(@title_field_name) %>
+        </div>
+      </div>
+    </div>
+    <% @typefields.each do |typefield| %>
+      <div class="col-md-12 col-lg-12">
+        <%= getOutputTypefield(typefield.name, @type_object.id, @type.name) %>
+      </div>
+    <% end %>
+    <div class="col-md-12 col-lg-12">
+      <%= link_to $language['show'].capitalize, getTypeobjectUrl(@type_object.url, @type.url), class: "btn btn-primary" %>
+      <%= link_to $language['edit'].capitalize, admin_edit_type_objects_path(@type.name, @type_object.id), class: "btn btn-info" %>
+      <%= link_to $language['delete'].capitalize, admin_delete_type_objects_path(@type.name, @type_object.id), :method => :delete, data: {confirm: $language['type_delete_confirmation'] }, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

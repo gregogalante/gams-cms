@@ -1,59 +1,51 @@
-<% provide(:title, "#{$language['new'].capitalize} #{@type.title_s}") %>
+<% provide(:title, "Configuration") %>
 
-<div class="home panel panel-primary">
+<div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title"><%= yield(:title) %></h3>
   </div>
   <div class="panel-body">
-    <%= form_for [:admin, @type_object],:url => admin_create_type_path, :html => { :multipart => true } do |f| %>
+    <%= form_tag(admin_types_path, method: "post", multipart: true, action: :type_create) do %>
 
-      <input type="hidden" name="type" value="<%= @type.name %>">
-
-      <div class="col-md-6 col-lg-6">
-        <h4 class="field-title"><%= $language['title'].capitalize %></h4>
-        <div class="input-group">
-          <label class="input-group-addon"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></label>
-          <input id="title" class="form-control" type="text"  name="<%= "#{@type.name}[#{@title_field_name}]" %>" value="">
-        </div>
-        <br>
+    <div class="col-md-6 col-lg-6">
+      <h4 class="field-title">Title singular</h4>
+      <div class="input-group">
+        <label class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></label>
+        <input class="form-control" type="text"  name="title_s" value="">
       </div>
+      <br>
+    </div>
 
-      <div class="col-md-6 col-lg-6">
-        <h4 class="field-title"><%= $language['url'].capitalize %></h4>
-        <div class="input-group">
-          <label class="input-group-addon"><span class="glyphicon glyphicon-link" aria-hidden="true"></label>
-          <input id="url" class="form-control" type="text"  name="<%= "#{@type.name}[url]" %>" value="">
-        </div>
-        <br>
+    <div class="col-md-6 col-lg-6">
+      <h4 class="field-title">Title plural</h4>
+      <div class="input-group">
+        <label class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></label>
+        <input class="form-control" type="text"  name="title_p" value="">
       </div>
+      <br>
+    </div>
 
-      <% @typefields.each do |typefield| %>
-      <%
-      typefield_name = typefield.name
-      if(params[:locale] and typefield.type_field != "image" and typefield.type_field != "file")
-        typefield_name = "#{typefield.name}_#{params[:locale]}"
-      elsif(typefield.type_field != "image" and typefield.type_field != "file")
-        typefield_name = "#{typefield.name}_#{I18n.default_locale}"
-      end
-      %>
-      <div class="col-md-12 col-lg-12">
-        <%= putFieldName(typefield.name) %>
-        <%= getInputTypefield(typefield.name, @type_object.id, @type.name, "#{@type.name}[#{typefield_name}]") %>
+    <div class="col-md-8 col-lg-8">
+      <h4 class="field-title">Url</h4>
+      <div class="input-group">
+        <label class="input-group-addon"><span class="glyphicon glyphicon-link" aria-hidden="true"></label>
+        <input class="form-control" type="text"  name="url" value="">
       </div>
-      <% end %>
+      <br>
+    </div>
 
-      <div class="col-md-12 col-lg-12">
-        <input class="btn btn-primary" type="submit" value="<%= $language['save'].capitalize %>">
-      </div>
+    <div class="col-md-4 col-lg-4">
+      <h4 class="field-title">Status</h4>
+      <select class="selectpicker" name="visible" data-live-search="true">
+        <option value="1">Visible</option>
+        <option value="0">Invisible</option>
+      </select>
+    </div>
+
+    <div class="col-md-12 col-lg-12">
+      <input class="btn btn-primary" type="submit" value="Save">
+    </div>
+
     <% end %>
   </div>
 </div>
-
-<script>
-
-  // Object title to url
-  $('#title').on('keyup',function(){
-    $('#url').val($('#title').val().split(' ').join('-').toLowerCase());
-  })
-
-</script>

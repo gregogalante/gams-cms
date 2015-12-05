@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
+gem 'responders'
 
 gem 'rails_12factor', :group=>:production
 gem 'rails-i18n'
@@ -31,10 +32,14 @@ gem 'will_paginate', '~> 3.0.7'
 gem 'paperclip', '~> 4.3.0'
 # Web console for admin settings Page
 gem 'web-console', '~> 2.0'
+# Remotipart to use remote: true and multipart:true
+gem 'remotipart', '~> 1.2'
 # Multilanguage
 gem 'traco'
 # Ransack for search function
 gem 'ransack'
+# Laxy load images
+gem "lazyload-rails"
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.5.1'
 # Pagination for bootstrap

@@ -23,7 +23,7 @@
     <% types = Type.where(visible: true).order('title_p DESC') %>
 
     <% types.each do |type| %>
-      <a href="<%= admin_types_path(type.name) %>" class="list-group-item <%= setActive(admin_types_path(type.name)) %>">
+      <a href="<%= admin_index_type_objects_path(type.name) %>" class="list-group-item <%= setActive(admin_types_path(type.name)) %>">
         <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
         <%= type.title_p.capitalize %>
         <span class="badge"><%= type.name.capitalize.constantize.count %></span>
@@ -31,9 +31,9 @@
     <% end %>
     <% # End of the list %>
 
-    <a href="<%= admin_uploads_path %>" class="list-group-item <%= setActive(admin_uploads_path) %>">
-      <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-      <%= $language['menu_uploads'] %>
+    <a href="<%= admin_images_path %>" class="list-group-item <%= setActive(admin_images_path) %>">
+      <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+      <%= $language['menu_images'] %>
     </a>
 
     <a href="<%= admin_notes_path %>" class="list-group-item <%= setActive(admin_notes_path) %>">
@@ -43,9 +43,9 @@
 
     <% # Show settings link only to administrator users %>
     <% if(session[:user_permissions] and session[:user_permissions] === 0) %>
-    <a href="<%= admin_settings_path %>" class="list-group-item <%= setActive(admin_settings_path) %>">
+    <a href="<%= admin_configuration_path %>" class="list-group-item <%= setActive(admin_configuration_path) %>">
       <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-      <%= $language['menu_settings'] %>
+      <%= $language['menu_configuration'] %>
     </a>
     <% end %>
 

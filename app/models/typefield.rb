@@ -5,7 +5,7 @@ class Typefield < ActiveRecord::Base
     self.name = self.name.parameterize('_')
   }
 
-  TYPEFIELD_LIST = %w(text textarea number editor file image)
+  TYPEFIELD_LIST = %w(text textarea number editor image)
 
   validates_uniqueness_of :name, :scope => :type_id
   validates_inclusion_of :type_field, :presence => true, :in => TYPEFIELD_LIST

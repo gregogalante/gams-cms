@@ -80,7 +80,7 @@ namespace :reset do
   end
 
   task :types => :environment do
-    DEFAULT_MODELS = ['user.rb', 'upload.rb', 'note.rb', 'page.rb', 'field.rb', 'type.rb', 'typefield.rb']
+    DEFAULT_MODELS = ['user.rb', 'image.rb', 'note.rb', 'page.rb', 'field.rb', 'type.rb', 'typefield.rb']
     # delete all models of types
     files = Dir.glob("#{Rails.root}/app/models/*")
     files.each do |file|
