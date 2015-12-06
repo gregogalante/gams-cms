@@ -39,10 +39,10 @@ class Admin::TypefieldsController < Admin::AdminController
         end
       end
       # output
-      flash[:success] = "The new typefield #{@typefield.title} is saved"
+      flash[:success] = $language['field_saved']
     else
       # output
-      flash[:danger] = "Sorry, the new field is not saved"
+      flash[:danger] = $language['field_not_saved']
       error_list = ""
       @typefield.errors.full_messages.each do |error|
         error_list += " #{error}, "

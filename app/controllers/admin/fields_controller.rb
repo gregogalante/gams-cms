@@ -19,10 +19,10 @@ class Admin::FieldsController < Admin::AdminController
     @field = Field.new(type_field: params[:type], name: params[:name].downcase, title: params[:title], page_id: params[:page], position: params[:position])
     if (@field.save)
       # output
-      flash[:success] = "The new field #{@field.title} is saved"
+      flash[:success] = $language['field_saved']
     else
       # output
-      flash[:danger] = "Sorry, the new field is not saved"
+      flash[:danger] = $language['field_not_saved']
       error_list = ""
       @field.errors.full_messages.each do |error|
         error_list += " #{error}, "
@@ -53,10 +53,10 @@ class Admin::FieldsController < Admin::AdminController
     @field = Field.new(type_field: params[:type], name: params[:name].downcase, title: params[:title], page_id: params[:page], repeating: params[:repeating], position: params[:position])
     if (@field.save)
       # output
-      flash[:success] = "The new repeater #{@field.title} is saved"
+      flash[:success] = $language['field_saved']
     else
       # output
-      flash[:danger] = "Sorry, the new repeater is not saved"
+      flash[:danger] = $language['field_not_saved']
       error_list = ""
       @field.errors.full_messages.each do |error|
         error_list += " #{error}, "

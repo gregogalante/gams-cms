@@ -1,4 +1,4 @@
-<% provide(:title, "Configuration") %>
+<% provide(:title, "#{$language['new'].capitalize} #{$language['field_repeater_singular']}") %>
 
 <div class="panel panel-primary">
   <div class="panel-heading">
@@ -10,7 +10,7 @@
     <input type="hidden" name="type" value="repeater">
 
     <div class="col-md-6 col-lg-6">
-      <h4 class="field-title">Name*</h4>
+      <h4 class="field-title"><%= $language['name'].capitalize %></h4>
       <div class="input-group">
         <label class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></label>
         <input class="form-control" type="text"  name="name">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="col-md-6 col-lg-6">
-      <h4 class="field-title">Title*</h4>
+      <h4 class="field-title"><%= $language['title'].capitalize %></h4>
       <div class="input-group">
         <label class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></label>
         <input class="form-control" type="text"  name="title">
@@ -28,7 +28,7 @@
     </div>
 
     <div class="col-md-4 col-lg-4">
-      <h4 class="field-title">Repeater of</h4>
+      <h4 class="field-title"><%= $language['field_repeater_of'] %></h4>
       <select class="selectpicker" name="repeating" data-live-search="true">
         <% @types.each do |type| %>
           <option value="<%= type.name %>"><%= type.title_p.capitalize %></option>
@@ -39,7 +39,7 @@
 
 
     <div class="col-md-4 col-lg-4">
-      <h4 class="field-title">Field page</h4>
+      <h4 class="field-title"><%= $language['page_singular'].capitalize %></h4>
       <select class="selectpicker" name="page" data-live-search="true">
         <% @pages.each do |page| %>
           <option value="<%= page.id %>"><%= page.title %></option>
@@ -49,7 +49,7 @@
     </div>
 
     <div class="col-md-4 col-lg-4">
-      <h4 class="field-title">Position</h4>
+      <h4 class="field-title"><%= $language['position'].capitalize %></h4>
       <div class="input-group">
         <label class="input-group-addon"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></label>
         <input class="form-control" type="number"  name="position">
@@ -58,7 +58,7 @@
     </div>
 
     <div class="col-md-12 col-lg-12">
-      <input class="btn btn-primary" type="submit" value="Save">
+      <input class="btn btn-primary" type="submit" value="<%= $language['save'].capitalize %>">
     </div>
 
     <% end %>

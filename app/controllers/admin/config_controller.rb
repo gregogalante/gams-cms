@@ -149,8 +149,8 @@ class Admin::ConfigController < Admin::AdminController
     # initialize application for selected languages
     languages_config_application()
     # output
-    flash[:success] = "Site settings are updated"
-    flash[:info] = "Please restart server to make it work fine"
+    flash[:success] = $language['setting_updated']
+    flash[:info] = $language['server_restart_required']
     redirect_to admin_config_languages_path
   end
 

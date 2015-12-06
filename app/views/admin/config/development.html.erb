@@ -1,4 +1,4 @@
-<% provide(:title, "Configuration") %>
+<% provide(:title, $language['development_guide']) %>
 
 <div class="panel panel-primary">
   <div class="panel-heading">
@@ -30,7 +30,7 @@
 
     <div class="col-md-12 col-lg-12 text-right">
       <br>
-      <a href="<%= admin_configuration_path %>" class="btn btn-primary">Back</a>
+      <a href="<%= admin_configuration_path %>" class="btn btn-primary"><%= $language['back'].capitalize %></a>
     </div>
   </div>
 </div>

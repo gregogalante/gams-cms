@@ -8,7 +8,7 @@
     <%= form_tag(admin_pages_path, method: "post", multipart: true, action: :create) do %>
 
     <div class="col-md-6 col-lg-6">
-      <h4 class="field-title">Title</h4>
+      <h4 class="field-title"><%= $language['title'].capitalize %></h4>
       <div class="input-group">
         <label class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></label>
         <input class="form-control" type="text"  name="title" value="">
@@ -17,7 +17,7 @@
     </div>
 
     <div class="col-md-6 col-lg-6">
-      <h4 class="field-title">Url</h4>
+      <h4 class="field-title"><%= $language['url'].capitalize %></h4>
       <div class="input-group">
         <label class="input-group-addon"><span class="glyphicon glyphicon-link" aria-hidden="true"></label>
         <input class="form-control" type="text"  name="url" value="">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-md-12 col-lg-12">
-      <input class="btn btn-primary" type="submit" value="Save">
+      <input class="btn btn-primary" type="submit" value="<%= $language['save'].capitalize %>">
     </div>
 
     <% end %>

@@ -1,4 +1,4 @@
-<% provide(:title, "Configuration") %>
+<% provide(:title, "#{$language['new'].capitalize} #{$language['type_singular']} #{$language['prototype']}") %>
 
 <div class="panel panel-primary">
   <div class="panel-heading">
@@ -8,7 +8,7 @@
     <%= form_tag(admin_types_path, method: "post", multipart: true, action: :type_create) do %>
 
     <div class="col-md-6 col-lg-6">
-      <h4 class="field-title">Title singular</h4>
+      <h4 class="field-title"><%= $language['title'].capitalize %></h4>
       <div class="input-group">
         <label class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></label>
         <input class="form-control" type="text"  name="title_s" value="">
@@ -17,7 +17,7 @@
     </div>
 
     <div class="col-md-6 col-lg-6">
-      <h4 class="field-title">Title plural</h4>
+      <h4 class="field-title"><%= $language['title'].capitalize %> (plural)</h4>
       <div class="input-group">
         <label class="input-group-addon"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></label>
         <input class="form-control" type="text"  name="title_p" value="">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="col-md-8 col-lg-8">
-      <h4 class="field-title">Url</h4>
+      <h4 class="field-title"><%= $language['url'].capitalize %></h4>
       <div class="input-group">
         <label class="input-group-addon"><span class="glyphicon glyphicon-link" aria-hidden="true"></label>
         <input class="form-control" type="text"  name="url" value="">
@@ -35,15 +35,15 @@
     </div>
 
     <div class="col-md-4 col-lg-4">
-      <h4 class="field-title">Status</h4>
+      <h4 class="field-title"><%= $language['status'].capitalize %></h4>
       <select class="selectpicker" name="visible" data-live-search="true">
-        <option value="1">Visible</option>
-        <option value="0">Invisible</option>
+        <option value="1"><%= $language['visible'].capitalize %></option>
+        <option value="0"><%= $language['invisible'].capitalize %></option>
       </select>
     </div>
 
     <div class="col-md-12 col-lg-12">
-      <input class="btn btn-primary" type="submit" value="Save">
+      <input class="btn btn-primary" type="submit" value="<%= $language['save'].capitalize %>">
     </div>
 
     <% end %>

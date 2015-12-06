@@ -12,6 +12,16 @@ title: title
 description: description
 style: style
 content: content
+text: text
+textarea: textarea
+number: number
+image: image
+position: position
+prototype: prototype
+status: status
+visible: visible
+invisible: invisible
+settings: settings
 
 save: save
 search: search
@@ -33,6 +43,19 @@ permissions_error: You don't have permissions to do this action
 
 # ADMIN
 setting_updated: Site settings are updated
+server_restart_required: You must restart the server
+header_text: Header title
+footer_text: Footer text
+footer_url: Footer url
+starting_guide: Starting guide
+development_guide: Development guide
+
+# Languages
+languages: Languages
+languages_question: How many languages do you have?
+languages_answer_one: Only one language
+languages_answer_two: Many languages
+languages_select: Select languages
 
 # HEADER
 header_logout: Logout
@@ -71,6 +94,24 @@ page_deleted: Page is deleted
 page_not_found: No pages found
 page_delete_confirmation: Do you really want to delete the page?
 
+# FIELDS
+field_singular: field
+field_plural: fields
+
+field_repeater_singular: repeater
+field_repeater_plural: repeaters
+
+field_saved: The new field is saved
+field_not_saved: Sorry, the new field is not saved
+field_updated: Page is updated
+field_not_updated: Page is not updated
+field_deleted: Page is deleted
+field_not_found: No fields found
+field_delete_confirmation: Do you really want to delete the field?
+
+field_type: Type of field
+field_repeater_of: Repeater of
+
 # NOTES
 note_singular: note
 note_plural: notes
@@ -95,6 +136,9 @@ type_deleted: Object is deleted
 type_not_found: No objects found
 type_delete_confirmation: Do you really want to delete the object?
 
+type_prototype_saved: The new object prototype is saved
+type_prototype_not_saved: The new object prototype is not saved
+
 # IMAGES
 image_singular: image
 image_plural: images
@@ -108,10 +152,3 @@ image_not_found: No images found
 image_delete_confirmation: Do you really want to delete the image?
 
 image_upload: Upload here your images
-
-
-
-
-
-attachment_deleted: Attachment is deleted
-attachment_not_found: This field has not attachment

@@ -55,10 +55,10 @@ class Admin::TypesController < Admin::AdminController
         f.write("This is the show file for the type #{@type.title_s}")
       end
       # output
-      flash[:success] = "The new type #{@type.title_s} is saved"
+      flash[:success] = $language['type_prototype_saved']
     else
       # output
-      flash[:danger] = "Sorry, the new type is not saved"
+      flash[:danger] = $language['type_prototype_not_saved']
       error_list = ""
       @type.errors.full_messages.each do |error|
         error_list += " #{error}, "

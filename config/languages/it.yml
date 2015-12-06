@@ -12,6 +12,16 @@ title: titolo
 description: descrizione
 style: stile
 content: contenuto
+text: testo
+textarea: area di testo
+number: numero
+image: immagine
+position: posizione
+prototype: prototipo
+status: stato
+visible: visibile
+invisible: invisibile
+settings: impostazioni
 
 save: salva
 search: cerca
@@ -33,6 +43,19 @@ permissions_error: Non hai i permessi per accedere a questa funzione
 
 # ADMIN
 setting_updated: Le impostazioni del sito sono state aggiornate
+server_restart_required: È necessario riavviare il server
+header_text: Titolo dell'header
+footer_text: Testo del footer
+footer_url: Url del testo del footer
+starting_guide: Guida iniziale
+development_guide: Guida di sviluppo
+
+# Languages
+languages: Lingue
+languages_question: Quante lingue ha il sito?
+languages_answer_one: Una sola lingua
+languages_answer_two: Più di una lingua
+languages_select: Seleziona lingue
 
 # HEADER
 header_logout: Logout
@@ -71,6 +94,24 @@ page_deleted: La pagina è stata eliminata
 page_not_found: Nessuna pagina trovata
 page_delete_confirmation: Vuoi veramente eliminare la pagina?
 
+# FIELDS
+field_singular: campo
+field_plural: campi
+
+field_repeater_singular: ripetitore
+field_repeater_plural: ripetitori
+
+field_saved: Il nuovo campo è stato creato
+field_not_saved: Il nuovo campo non è stato creato
+field_updated: Il campo è stato aggiornato
+field_not_updated: Il campo non è stato aggiornato
+field_deleted: Il campo è  stato eliminato
+field_not_found: Nessun campo trovato
+field_delete_confirmation: Vuoi veramente eliminare il campo?
+
+field_type: Tipo di campo
+field_repeater_of: Ripetitore di
+
 # NOTES
 note_singular: nota
 note_plural: note
@@ -95,6 +136,9 @@ type_deleted: L'oggetto è stato eliminato
 type_not_found: Nessun oggetto trovato
 type_delete_confirmation: Vuoi veramente eliminare l'oggetto?
 
+type_prototype_saved: Il nuovo prototipo di oggetto è stato creato
+type_prototype_not_saved: Il nuovo prototipo di oggetto non è stato creato
+
 # IMAGES
 image_singular: immagine
 image_plural: immagini
@@ -108,10 +152,3 @@ image_not_found: Nessuna immagine trovata
 image_delete_confirmation: Vuoi veramente eliminare l' immagine?
 
 image_upload: Carica qui le tue immagini
-
-
-
-
-
-attachment_deleted: L'allegato è stato eliminato
-attachment_not_found: Il campo non ha alcun allegato

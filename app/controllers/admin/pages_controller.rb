@@ -23,10 +23,10 @@ class Admin::PagesController < Admin::AdminController
         page.write("This is the '#{@page.title}' template file!")
       end
       # output
-      flash[:success] = "The new page #{@page.title} is saved"
+      flash[:success] = $language['page_saved']
     else
       # output
-      flash[:danger] = "Sorry, the new page is not saved"
+      flash[:danger] = $language['page_not_saved']
       error_list = ""
       @page.errors.full_messages.each do |error|
         error_list += " #{error}, "

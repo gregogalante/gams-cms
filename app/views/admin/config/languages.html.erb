@@ -1,4 +1,4 @@
-<% provide(:title, "Configuration") %>
+<% provide(:title, $language['languages'].capitalize) %>
 
 <div class="panel panel-primary">
   <div class="panel-heading">
@@ -7,16 +7,16 @@
   <div class="panel-body">
     <%= form_tag(admin_config_languages_initialize_path) do %>
     <div class="col-md-7 col-lg-7">
-      <h4 class="field-title">How many languages do you have?</h4>
+      <h4 class="field-title"><%= $language['languages_question'] %></h4>
       <select id="language-chose" class="selectpicker" name="language_chose" data-live-search="true">
-        <option value="false" <%= "selected" if(!@has_languages) %>>One language</option>
-        <option value="true" <%= "selected" if(@has_languages) %>>Many languages</option>
+        <option value="false" <%= "selected" if(!@has_languages) %>><%= $language['languages_answer_one'] %></option>
+        <option value="true" <%= "selected" if(@has_languages) %>><%= $language['languages_answer_two'] %></option>
       </select>
       <br><br>
     </div>
     <div class="col-md-5 col-lg-5">
-      <h4 class="field-title">Select sites languages </h4>
-      <select id="select-languages" class="selectized" placeholder="Select site languages" multiple="multiple" tabindex="-1" style="display: none;"></select>
+      <h4 class="field-title"><%= $language['languages_select'] %></h4>
+      <select id="select-languages" class="selectized" placeholder="<%= $language['languages_select'] %>" multiple="multiple" tabindex="-1" style="display: none;"></select>
       <input id="select-languages-hidden" value="<% if (@languages_list) %><% @languages_list.each do |code| %><%= raw "#{code}," %><% end %><% end %>" type="hidden" name="languages_list">
       <br>
     </div>
