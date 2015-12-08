@@ -10,7 +10,7 @@ module Template::TemplateHelper
   end
 
   # page field
-  def get_field(field_name, page_id)
+  def get_page_field(field_name, page_id)
     if (field = Field.find_by(page_id: page_id, name: field_name))
       case field.type_field
       # image field
@@ -36,5 +36,24 @@ module Template::TemplateHelper
       end
     end
   end
+
+  def get_type_field(field_name, field_type, type_object)
+    if(type_object)
+      case field_type
+      # image field
+      when "image"
+        return Image.find(type_object.send(field_name))
+      # other field
+      else
+        if(params[:locale])
+          return raw type_object.send("#{field_name}_#{params[:locale]}")
+        else
+          return raw type_object.send("#{field_name}_#{I18n.default_locale}")
+        end
+      end
+    end
+  end
+
+  
 
 end

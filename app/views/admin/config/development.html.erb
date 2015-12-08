@@ -10,7 +10,7 @@
         <h2>Sviluppo front-end pagine</h2>
       </div>
       Ogni pagina ha dei fields propri. I possibili fields sono: text, number, textarea, editor, image, repeater.<br>
-      Durante lo sviluppo del front-end è possibile accedere ai dati di questi field attraverso la funzione <b>get_field(field_name, page_id)</b>. <br>
+      Durante lo sviluppo del front-end è possibile accedere ai dati di questi field attraverso la funzione <b>get_page_field(field_name, page_id)</b>. <br>
       La variabile <i>field_name</i> è una stringa contenente il nome univoco assegnato al field durante la sua creazione; la variabile <i>page_id</i> è l'id della pagina in cui ci troviamo.<br>
       E' possibile accedere ai dati della pagina in cui ci troviamo attraverso la variabile globale <i>@page</i>:<br>
       <br>
@@ -26,6 +26,9 @@
       Il file index mostra la lista di oggetti appartenenti al type; è possibile accedere ad un array contenente quella lista attraverso la variabile globale <i>@type_objects</i>.<br>
       <br>
       Il file show mostra un solo oggetto appartenente al type; è possibile accedere allì'oggetto attraverso la variabile globale <i>@type_object</i>.<br>
+      <br>
+      Dato un oggetto di un type è possibile accedere ai suoi field attraverso la funzione <b>get_type_field(field_name, field_type, type_object)</b>.<br>
+      La variabile <i>field_name</i> è una stringa contenente il nome univoco assegnato al field durante la sua creazione; la variabile <i>field_type</i> è una stringa contenente il tipo di field; la variabile <i>type_object</i> è l'oggetto al quale ci si sta riferendo.<br>
     </div>
 
     <div class="col-md-12 col-lg-12 text-right">

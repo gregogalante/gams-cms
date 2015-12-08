@@ -17,7 +17,7 @@ gem 'sqlite3', :group=>:development
 # gem 'pg', :group=>:production # Change with your production db
 
 # Set your current ruby version
-ruby "2.2.1"
+ruby "2.2.3"
 
 #OTHER GEMS
 gem 'byebug', :group=>:development
