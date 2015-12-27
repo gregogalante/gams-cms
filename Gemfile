@@ -13,8 +13,8 @@ gem 'rails_12factor', :group=>:production
 gem 'rails-i18n'
 
 # DATABASE GEMS
-gem 'sqlite3', :group=>:development
-gem 'pg', :group=>:production # Change with your production db
+gem 'sqlite3'
+# gem 'pg', :group=>:production # Change with your production db
 
 # Set your current ruby version
 ruby "2.2.3"
