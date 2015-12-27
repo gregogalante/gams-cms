@@ -100,6 +100,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    pg (0.18.4)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     rack (1.6.4)
@@ -199,6 +200,7 @@ DEPENDENCIES
   jquery-rails
   lazyload-rails
   paperclip (~> 4.3.0)
+  pg
   rails (= 4.2.2)
   rails-i18n
   rails_12factor
@@ -214,3 +216,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   will_paginate (~> 3.0.7)
   will_paginate-bootstrap
+
+BUNDLED WITH
+   1.11.2
