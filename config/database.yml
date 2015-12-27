@@ -22,6 +22,8 @@ test:
 
 production:
   adapter: postgresql
-  database: my_database_production
+  encoding: utf8
+  database: d4qsl75npe38rt
   pool: 5
-  timeout: 5000
+  username: hqaujrlyynnace
+  password: oqX8cmJxbc0InlTRl1K6u93Riw
