@@ -1,6 +1,8 @@
+# Gams CMS
+
 Gams CMS is a Ruby on Rails content management system. This CMS is <b>open source</b>, based on <b>Bootstrap</b> framework, <b>easy</b> to set up.
 
-# Configuration
+<b>CONFIGURATION</b>
 
 Gams must be configurated from console before being used.
 
