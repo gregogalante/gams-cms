@@ -1,15 +1,18 @@
 # Gams CMS
 
-Gams CMS is a Ruby on Rails content management system. This CMS is <b>open source</b>, based on <b>Bootstrap</b> framework, <b>easy</b> to set up.
+Gams CMS is a Ruby on Rails content management system. This CMS is **open source**, based on **Bootstrap** framework, **easy** to set up.
 
-<b>CONFIGURATION</b>
+## Configuration
 
 Gams must be configurated from console before being used.
 
-- Run <b>rake reset:start</b>
-- Run <b>rake db:setup</b> to configure the database
-- Go to yoursite/admin to login!
+```console
+bundle exec rake reset:start
+bundle exec rake db:setup
+```
 
-You can login to the CMS using '<b>admin@mail.com</b>' as email and '<b>ilovegamscms</b>' as password.
+Go to *yoursite/admin* to login!
 
-<b>Note: this project is stopped and has some problems for the deployment phase</b>
+You can login to the CMS using **admin@mail.com** as email and **ilovegamscms** as password.
+
+**Note: this project is stopped and has some problems for the deployment phase**
