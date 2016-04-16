@@ -13,6 +13,7 @@
  *= require_tree .
  *= require selectize
  *= require selectize.bootstrap3
+ //= require bootstrap-select
  *= require dropzone/dropzone
  *= require_self
  */
@@ -69,7 +70,6 @@ $badge-color: #555555;
 $badge-link-hover-color: #555555;
 
 
-@import 'bootstrap-select';
 @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
