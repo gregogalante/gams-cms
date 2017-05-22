@@ -15,4 +15,4 @@ Go to *yoursite/admin* to login!
 
 You can login to the CMS using **admin@mail.com** as email and **ilovegamscms** as password.
 
-**Note: this project is stopped and has some problems for the deployment phase**
+**Note: this project is deprecated.**
